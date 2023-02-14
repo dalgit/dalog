@@ -1,3 +1,8 @@
+import PostCard from '@/components/PostCard/PostCard'
 export default function Home() {
-  return <>hello</>
+  return (
+    <>
+      <PostCard />
+    </>
+  )
 }
