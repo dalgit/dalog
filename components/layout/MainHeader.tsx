@@ -30,6 +30,28 @@ const MainHeader = () => {
 
 export default MainHeader
 
+const Wrapper = styled.nav`
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 430px;
+  border-bottom: 1px solid #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 63px;
+
+  height: ${({ theme }) => theme.layoutHeight.header};
+
+  background-color: rgba(255, 255, 255, 0.5);
+`
+const List = styled.ul`
+  display: flex;
+  align-items: center;
+  height: 100%;
+`
+
 const Item = styled.div<{ isCurrentUrl: boolean }>`
   display: flex;
   align-items: center;
@@ -46,18 +68,4 @@ const Item = styled.div<{ isCurrentUrl: boolean }>`
   &:not(:last-child) {
     margin-right: 60px;
   }
-`
-
-const Wrapper = styled.nav`
-  padding: 0 430px;
-  border-bottom: 1px solid #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 63px;
-`
-const List = styled.ul`
-  display: flex;
-  align-items: center;
-  height: 100%;
 `
