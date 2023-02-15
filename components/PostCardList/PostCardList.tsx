@@ -1,25 +1,17 @@
 import PostCard from '../PostCard/PostCard'
-import { useState, useEffect } from 'react'
 import { IPosts } from '@/types/post'
 import styled from 'styled-components'
-const PostCardList = () => {
-  const [posts, setPosts] = useState<IPosts>([])
 
-  useEffect(() => {
-    fetch('http://localhost:3000/data/post.json')
-      .then((res) => res.json())
-      .then((res) => setPosts(res))
-  }, [])
-
+const PostCardList = ({ posts }: IPosts) => {
   return (
     <PostCardListLayout>
       {posts.map((post) => (
         <PostCard
+          key={post.title}
           title={post.title}
           tags={post.tags}
           content={post.content}
           createdDate={post.createdDate}
-          key={post.id}
         />
       ))}
     </PostCardListLayout>
