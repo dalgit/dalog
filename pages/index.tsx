@@ -1,8 +1,9 @@
-import PostCard from '@/components/PostCard/PostCard'
+import PostCardList from '@/components/PostCardList/PostCardList'
+
 export default function Home() {
   return (
     <>
-      <PostCard />
+      <PostCardList />
     </>
   )
 }

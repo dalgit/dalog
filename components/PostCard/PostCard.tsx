@@ -1,16 +1,21 @@
 import cardTmp from '/public/assets/cardTmp.jpg'
 import Image from 'next/image'
 import styled from 'styled-components'
+import { IPost } from '@/types/post'
 
-const PostCard = () => {
+const PostCard = ({ title, content, tags, createdDate }: IPost) => {
   return (
     <PostCardLayout>
       <Image src={cardTmp} width={180} height={150} alt="tmp" />
       <ContentBox>
-        <Tag>#임시태그1</Tag>
-        <Title>임시 제목입니다.</Title>
-        <ContentPreview>임시 내용</ContentPreview>
-        <Date>2032.02.15</Date>
+        <Tags>
+          {tags.map((tag) => (
+            <span key={tag}>#{tag}</span>
+          ))}
+        </Tags>
+        <Title>{title}</Title>
+        <ContentPreview>{content}</ContentPreview>
+        <Date>{createdDate}</Date>
       </ContentBox>
     </PostCardLayout>
   )
@@ -30,7 +35,7 @@ const ContentBox = styled.div`
   justify-content: space-between;
 `
 
-const Tag = styled.p`
+const Tags = styled.div`
   color: #726ed7;
   font-size: 13px;
 
@@ -38,6 +43,11 @@ const Tag = styled.p`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+
+  span {
+    margin-right: 10px;
+    line-height: normal;
+  }
 `
 
 const Title = styled.p`
