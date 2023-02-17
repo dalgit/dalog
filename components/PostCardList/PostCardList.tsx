@@ -8,6 +8,7 @@ const PostCardList = ({ posts }: IPosts) => {
       {posts.map((post) => (
         <PostCard
           key={post.title}
+          postSlug={post.postSlug}
           title={post.title}
           tags={post.tags}
           content={post.content}
