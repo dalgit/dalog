@@ -1,6 +1,6 @@
 import PostCardList from '@/components/PostCardList/PostCardList'
-import postUtil from '@/utils/postUtil'
 import { IPosts } from '@/types/post'
+import { getAllPosts } from '@/utils/postUtil'
 
 export default function Home({ posts }: IPosts) {
   return (
@@ -11,8 +11,7 @@ export default function Home({ posts }: IPosts) {
 }
 
 export async function getStaticProps() {
-  const postsData = postUtil.getAllPosts()
-
+  const postsData = await getAllPosts()
   return {
     props: {
       posts: postsData,

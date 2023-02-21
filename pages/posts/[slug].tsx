@@ -1,17 +1,23 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import postUtil from '@/utils/postUtil'
+import { getPostBySlug } from '@/utils/postUtil'
 import { ParsedUrlQuery } from 'querystring'
 import { IPost } from '@/types/post'
 import styled from 'styled-components'
 import Link from 'next/link'
+import Image from 'next/image'
+
 type PostPageProps = {
   post: IPost
 }
 
-const PostPage = ({ post }: PostPageProps) => {
-  const { title, createdDate, tags, content } = post
+interface IParams extends ParsedUrlQuery {
+  slug: string
+}
 
-  console.log(content)
+const PostPage = ({ post }: PostPageProps) => {
+  const { title, createdDate, tags, content, postSlug, thumbnail } = post
+  const thumbnailPath = `/posts/${postSlug}/${thumbnail}`
+  console.log(postSlug)
   return (
     <article>
       <HeadBox>
@@ -27,17 +33,28 @@ const PostPage = ({ post }: PostPageProps) => {
           <Date>{createdDate}</Date>
         </HeadSubBox>
       </HeadBox>
-
-      <ContentBox>{content}</ContentBox>
+      <ImageWrap>
+        <Image src={thumbnailPath} alt="thumbnail" width={600} height={400} />
+      </ImageWrap>
+      <ContentBox dangerouslySetInnerHTML={{ __html: content }}></ContentBox>
     </article>
   )
 }
 
 export default PostPage
 
+const ImageWrap = styled.div`
+  margin: 30px 0px;
+  display: flex;
+  justify-content: center;
+`
 const ContentBox = styled.div`
   white-space: pre-Wrap;
   margin: 40px 0px;
+
+  * {
+    all: revert;
+  }
 `
 
 const HeadSubBox = styled.div`
@@ -45,6 +62,7 @@ const HeadSubBox = styled.div`
   justify-content: space-between;
   align-items: center;
 `
+
 const HeadBox = styled.div`
   border-bottom: 1px solid #e4e4e4;
   padding-bottom: 25px;
@@ -70,9 +88,8 @@ const Date = styled.span`
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams
-  const post = postUtil.getPostBySlug(slug)
+  const post = await getPostBySlug(slug, false)
 
-  console.log('fsdfadsfadsfa', post)
   return {
     props: { post },
   }
@@ -80,11 +97,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: [{ params: { slug: 'tmp' } }],
-    fallback: true,
+    paths: [
+      { params: { slug: 'tmp' } },
+      { params: { slug: 'tmp2' } },
+      { params: { slug: 'tmp3' } },
+    ],
+    fallback: false,
   }
-}
-
-interface IParams extends ParsedUrlQuery {
-  slug: string
 }

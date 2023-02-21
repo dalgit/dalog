@@ -4,11 +4,18 @@ import styled from 'styled-components'
 import { IPost } from '@/types/post'
 import Link from 'next/link'
 
-const PostCard = ({ title, content, tags, createdDate, postSlug }: IPost) => {
+type PostCardProps = {
+  post: IPost
+}
+
+const PostCard = ({ post }: PostCardProps) => {
+  const { title, content, tags, createdDate, postSlug, thumbnail } = post
+  const thumbnailPath = `/posts/${postSlug}/${thumbnail}`
+
   return (
     <PostCardLayout>
       <Link as={`/posts/${postSlug}`} href="/posts/[slug]">
-        <Image src={cardTmp} width={180} height={150} alt="tmp" />
+        <Image src={thumbnailPath} width={180} height={150} alt="tmp" />
       </Link>
       <ContentBox>
         <Tags>
@@ -21,7 +28,7 @@ const PostCard = ({ title, content, tags, createdDate, postSlug }: IPost) => {
         <Link as={`/posts/${postSlug}`} href="/posts/[slug]">
           <Title>{title}</Title>
         </Link>
-        <ContentPreview>{content}</ContentPreview>
+        <ContentPreview dangerouslySetInnerHTML={{ __html: content }} />
         <Date>{createdDate}</Date>
       </ContentBox>
     </PostCardLayout>
@@ -32,6 +39,7 @@ export default PostCard
 
 const PostCardLayout = styled.article`
   display: flex;
+  height: 150px;
 `
 
 const ContentBox = styled.div`
@@ -64,7 +72,7 @@ const Title = styled.p`
   overflow: hidden;
 `
 
-const ContentPreview = styled.p`
+const ContentPreview = styled.div`
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -72,6 +80,11 @@ const ContentPreview = styled.p`
 
   font-size: 16px;
   height: 32px;
+
+  p {
+    display: inline;
+    white-space: normal;
+  }
 `
 
 const Date = styled.p`

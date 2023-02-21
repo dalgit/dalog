@@ -6,14 +6,7 @@ const PostCardList = ({ posts }: IPosts) => {
   return (
     <PostCardListLayout>
       {posts.map((post) => (
-        <PostCard
-          key={post.title}
-          postSlug={post.postSlug}
-          title={post.title}
-          tags={post.tags}
-          content={post.content}
-          createdDate={post.createdDate}
-        />
+        <PostCard key={post.postSlug} post={post} />
       ))}
     </PostCardListLayout>
   )

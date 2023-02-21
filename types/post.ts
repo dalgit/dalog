@@ -3,7 +3,8 @@ export interface IPost {
   title: 'string'
   content: 'string'
   createdDate: 'string'
-  postSlug?: 'string'
+  postSlug: 'string'
+  thumbnail: 'string'
 }
 
 export type IPosts = {
