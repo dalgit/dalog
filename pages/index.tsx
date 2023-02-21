@@ -1,6 +1,6 @@
 import PostCardList from '@/components/PostCardList/PostCardList'
 import { IPosts } from '@/types/post'
-import { getAllPosts } from '@/utils/postUtil'
+import { getAllPosts } from '@/utils/postUtils'
 
 export default function Home({ posts }: IPosts) {
   return (

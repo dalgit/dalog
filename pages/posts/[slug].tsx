@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { getPostBySlug } from '@/utils/postUtil'
+import { getPostBySlug } from '@/utils/postUtils'
 import { ParsedUrlQuery } from 'querystring'
 import { IPost } from '@/types/post'
 import styled from 'styled-components'
