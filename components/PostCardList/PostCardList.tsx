@@ -15,6 +15,7 @@ const PostCardList = ({ posts }: IPosts) => {
 export default PostCardList
 
 const PostCardListLayout = styled.section`
+  min-width: 0;
   article {
     margin-bottom: 65px;
   }

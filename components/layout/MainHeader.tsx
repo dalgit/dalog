@@ -34,13 +34,15 @@ const Wrapper = styled.nav`
   box-sizing: border-box;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  padding: 0 430px;
+  padding: inherit;
+
   border-bottom: 1px solid #f5f5f5;
+
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 63px;
+  align-items: center;
 
   height: ${({ theme }) => theme.layoutHeight.header};
 

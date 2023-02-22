@@ -3,14 +3,17 @@ import MainHeader from './MainHeader'
 import { ReactNode } from 'react'
 import Footer from './Footer'
 import styled from 'styled-components'
-
+import SubHeader from './SubHeader'
 type LayoutProps = { children: ReactNode }
 
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <MainHeader />
-      <Wrapper>{children}</Wrapper>
+      <BaseLayout>
+        <MainHeader />
+        <SubHeader />
+        {children}
+      </BaseLayout>
       <Footer />
     </>
   )
@@ -18,13 +21,9 @@ const Layout = ({ children }: LayoutProps) => {
 
 export default Layout
 
-const Wrapper = styled.div`
-  margin-top: 63px;
-
-  padding: 20px 430px;
-
-  box-sizing: border-box;
-
+const BaseLayout = styled.div`
+  padding: 0 300px;
+  margin-top: ${({ theme }) => theme.layoutHeight.header};
   min-height: ${({ theme }) =>
     `calc(100vh - ${theme.layoutHeight.header} - ${theme.layoutHeight.footer})`};
 `

@@ -5,20 +5,17 @@ import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <footer>
-      <FooterLayout>
-        <Link href="https://github.com/dalgit">
-          <Image src={icon_github} width={30} alt="icon_github" />
-        </Link>
-        <span>Copyright © Dalgit 2023 | tmp@tmp.com</span>
-      </FooterLayout>
-    </footer>
+    <FooterLayout>
+      <Link href="https://github.com/dalgit">
+        <Image src={icon_github} width={30} alt="icon_github" />
+      </Link>
+      <span>Copyright © Dalgit 2023 | tmp@tmp.com</span>
+    </FooterLayout>
   )
 }
 
 export default Footer
 const FooterLayout = styled.footer`
-  padding: 0 430px;
   display: flex;
   flex-direction: column;
   justify-content: center;

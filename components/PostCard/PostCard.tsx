@@ -1,4 +1,3 @@
-import cardTmp from '/public/assets/cardTmp.jpg'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { IPost } from '@/types/post'
@@ -65,11 +64,12 @@ const Tags = styled.div`
 `
 
 const Title = styled.p`
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bolder;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  line-height: normal;
 `
 
 const ContentPreview = styled.div`
