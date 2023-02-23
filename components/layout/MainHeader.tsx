@@ -4,7 +4,7 @@ import Image from 'next/image'
 import logo from '/public/assets/icon_logo.png'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { HEADER_MENUS as menus } from '@/constants/headerMenus'
+import { MAIN_MENUS as menus } from '@/constants/headerMenus'
 
 const MainHeader = () => {
   const router = useRouter()
