@@ -1,14 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import cardTmp from '/public/assets/cardTmp.jpg'
 import Link from 'next/link'
-const ProjectCard = () => {
+const ProjectCard = ({ post }: any) => {
+  const thumbnailPath = `/posts/${post?.postSlug}/${post?.thumbnail}`
+  console.log(thumbnailPath)
   return (
     <ProjCardLayout>
-      <Link href={'/'}>
+      <Link as={`/projects/${post?.postSlug}`} href={'/projects/[slug]'}>
         <Image
-          src={cardTmp}
+          src={thumbnailPath}
           alt="tmp"
           width={280}
           height={170}
@@ -18,11 +19,11 @@ const ProjectCard = () => {
         />
         <ContentBox>
           <BoxHeader>
-            <span>Toy Project</span>
-            <span>2023-02-01</span>
+            <span>{post?.type}</span>
+            <span>{post?.createdDate}</span>
           </BoxHeader>
-          <Title>Blog (Dalog)</Title>
-          <Content>나만의 블로그 만들기</Content>
+          <Title>{post?.title}</Title>
+          <Content>{post?.description}</Content>
         </ContentBox>
       </Link>
     </ProjCardLayout>
