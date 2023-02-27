@@ -4,10 +4,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 const ProjectCard = ({ post }: any) => {
   const thumbnailPath = `/posts/${post?.postSlug}/${post?.thumbnail}`
-  console.log(thumbnailPath)
   return (
     <ProjCardLayout>
-      <Link as={`/projects/${post?.postSlug}`} href={'/projects/[slug]'}>
+      <Link href={`/projects/${post?.postSlug}`}>
         <Image
           src={thumbnailPath}
           alt="tmp"

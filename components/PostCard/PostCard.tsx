@@ -13,18 +13,18 @@ const PostCard = ({ post }: PostCardProps) => {
 
   return (
     <PostCardLayout>
-      <Link as={`/posts/${postSlug}`} href="/posts/[slug]">
+      <Link href={`/posts/${postSlug}`}>
         <Image src={thumbnailPath} width={180} height={150} alt="tmp" />
       </Link>
       <ContentBox>
         <Tags>
-          {tags.map((tag) => (
+          {tags?.map((tag) => (
             <Link href="/" key={tag}>
               #{tag}
             </Link>
           ))}
         </Tags>
-        <Link as={`/posts/${postSlug}`} href="/posts/[slug]">
+        <Link href={`/posts/${postSlug}`}>
           <Title>{title}</Title>
         </Link>
         <ContentPreview dangerouslySetInnerHTML={{ __html: content }} />
