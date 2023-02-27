@@ -5,6 +5,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { getAllNoteSlugs, notes } from '@/utils/noteUtils'
 import { getNoteBySlug } from '@/utils/noteUtils'
+
 interface IParams extends ParsedUrlQuery {
   slug: string[]
 }
@@ -17,24 +18,40 @@ const index = ({ notess, note }: any) => {
           <NoteItem key={idx} note={note} />
         ))}
       </Tmp>
-      <div dangerouslySetInnerHTML={{ __html: note.content }}></div>
+      <ContentBox>
+        <ContentTitle>{note.title}</ContentTitle>
+        <Content dangerouslySetInnerHTML={{ __html: note.content }}></Content>
+      </ContentBox>
     </IndexLayout>
   )
 }
 
 export default index
+const ContentBox = styled.div`
+  padding-left: 20px;
 
+  h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 130%;
+  }
+`
+
+const ContentTitle = styled.h1``
+const Content = styled.div``
 const Tmp = styled.ul`
-  border-right: 1px solid gray;
+  border-right: 2px solid #eaeaea;
   width: 200px;
 
-  div {
-    font-size: 20px;
+  > div {
+    margin-bottom: 20px;
   }
 `
 
 const IndexLayout = styled.div`
   display: flex;
+  margin-bottom: 100px;
 `
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
