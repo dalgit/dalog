@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import NoteItem from '@/components/NoteItem/NoteItem'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { notes } from '@/utils/noteUtils'
+import { getAllNoteSlugs, notes } from '@/utils/noteUtils'
 import { getNoteBySlug } from '@/utils/noteUtils'
-
 interface IParams extends ParsedUrlQuery {
   slug: string[]
 }
@@ -40,6 +39,7 @@ const IndexLayout = styled.div`
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams
+
   const notess = notes
   const note = await getNoteBySlug(slug)
   return {
@@ -48,12 +48,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const noteSlugs = getAllNoteSlugs()
   return {
-    paths: [
-      { params: { slug: ['react', '1'] } },
-      { params: { slug: ['rere', '1'] } },
-      { params: { slug: ['rere', '2'] } },
-    ],
+    paths: noteSlugs.map((noteSlug: any) => ({
+      params: {
+        slug: noteSlug,
+      },
+    })),
+
     fallback: false,
   }
 }

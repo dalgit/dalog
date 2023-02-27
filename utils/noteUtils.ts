@@ -1,10 +1,28 @@
 import path from 'path'
 import fs from 'fs'
-import matter 
+import matter from 'gray-matter'
 import { markdownToHtml } from './postUtils'
+
 const noteBaseDirectory = path.join(process.cwd(), 'posts', 'note')
 
 export const noteFloders = fs.readdirSync(noteBaseDirectory)
+
+export const mdRemover = (fileName: string) => fileName.replace(/\.md$/, '')
+
+export const getAllNoteSlugs = () => {
+  const slugs: any[] = []
+
+  noteFloders.map((noteFolder) => {
+    const notesDirectory = path.join(noteBaseDirectory, noteFolder)
+    const noteFileNames = fs.readdirSync(notesDirectory)
+
+    noteFileNames.map((noteFileName) => {
+      const slug = mdRemover(noteFileName)
+      slugs.push([noteFolder, slug])
+    })
+  })
+  return slugs
+}
 
 export const getNoteBySlug = async (slug: any[]) => {
   const a = slug.join('\\')
