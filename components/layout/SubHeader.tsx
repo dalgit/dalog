@@ -7,12 +7,11 @@ import Link from 'next/link'
 const SubHeader = () => {
   const router = useRouter()
   const path = router.pathname
-  console.log(path)
   return (
     <List>
       {menus.map((menu) => {
         return (
-          <Item isCurrentUrl={path === menu.path} key={menu.id}>
+          <Item isCurrentUrl={path == menu.path} key={menu.id}>
             <Link href={menu.path}>{menu.name}</Link>
           </Item>
         )

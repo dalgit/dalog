@@ -2,7 +2,6 @@ import React from 'react'
 import ProjectCard from '../ProjectCard/ProjectCard'
 import styled from 'styled-components'
 const ProjectCardList = ({ posts }: any) => {
-  console.log(posts, 'zzz')
   return (
     <ProjectCardListLayout>
       {posts.map((post: any) => (

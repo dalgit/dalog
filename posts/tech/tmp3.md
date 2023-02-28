@@ -1,7 +1,7 @@
 ---
 title: 'aaa'
 createdDate: '2023-02-16'
-tags: ['tag1', 'tag2', 'tag3']
+tags: ['f', 'g', 'h']
 thumbnail: 'ddat2.jpg'
 ---
 

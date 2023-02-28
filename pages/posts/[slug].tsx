@@ -3,7 +3,6 @@ import { getPostBySlug } from '@/utils/postUtils'
 import { ParsedUrlQuery } from 'querystring'
 import { IPost } from '@/types/post'
 import PostLender from '@/components/PostLender/PostLender'
-
 type PostPageProps = {
   post: IPost
 }

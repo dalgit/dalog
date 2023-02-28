@@ -1,7 +1,7 @@
 ---
-title: '타이틀은 어떻게 작성해야 할까? 모두 한번 알아보자'
+title: '[next.js] Image 컴포넌트를 활용한 이미지 최적화'
 createdDate: '2023-02-16'
-tags: ['tag1', 'tag2', 'tag3']
+tags: ['a', 'b', 'c']
 thumbnail: 'cardTmp.jpg'
 ---
 

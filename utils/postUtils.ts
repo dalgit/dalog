@@ -38,6 +38,8 @@ export const getAllTags = async () => {
   return tagsStore
 }
 
+
+
 export const getAllPosts = async (): Promise<IPost[]> => {
   const onlyParagraph = true
 

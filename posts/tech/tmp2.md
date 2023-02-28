@@ -1,7 +1,7 @@
 ---
 title: '타이틀은 어떻'
 createdDate: '2023-02-16'
-tags: ['tag1', 'tag2', 'tag3']
+tags: ['a', 'd', 'e']
 thumbnail: 'ddat.jpg'
 ---
 

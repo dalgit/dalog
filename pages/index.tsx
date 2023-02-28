@@ -1,6 +1,6 @@
 import PostCardList from '@/components/PostCardList/PostCardList'
 import { IPosts } from '@/types/post'
-import { getAllPosts } from '@/utils/postUtils'
+import { getAllPosts, getAllTags } from '@/utils/postUtils'
 import styled from 'styled-components'
 import SideBar from '@/components/layout/SideBar'
 
@@ -15,6 +15,8 @@ export default function Home({ posts }: IPosts) {
 
 export async function getStaticProps() {
   const postsData = await getAllPosts()
+  const test = await getAllTags()
+
   return {
     props: {
       posts: postsData,
