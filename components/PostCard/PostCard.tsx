@@ -19,7 +19,7 @@ const PostCard = ({ post }: PostCardProps) => {
       <ContentBox>
         <Tags>
           {tags?.map((tag) => (
-            <Link href="/" key={tag}>
+            <Link href={`/tag/${tag}`} key={tag}>
               #{tag}
             </Link>
           ))}
