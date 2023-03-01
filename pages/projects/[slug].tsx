@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { getProjectBySlug } from '@/utils/postUtils'
+import { getProjectBySlug } from '@/utils/projectUtils'
 import { ParsedUrlQuery } from 'querystring'
 import PostLender from '@/components/PostLender/PostLender'
 

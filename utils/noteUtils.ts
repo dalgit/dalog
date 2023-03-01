@@ -1,13 +1,11 @@
 import path from 'path'
 import fs from 'fs'
 import matter from 'gray-matter'
+import { mdRemover } from './common'
+import { readMarkdownFile } from './postUtils'
 import { markdownToHtml } from './postUtils'
-
 const noteBaseDirectory = path.join(process.cwd(), 'posts', 'note')
-
-export const noteFloders = fs.readdirSync(noteBaseDirectory)
-
-export const mdRemover = (fileName: string) => fileName.replace(/\.md$/, '')
+const noteFloders = fs.readdirSync(noteBaseDirectory)
 
 export const getAllNoteSlugs = () => {
   const slugs: any[] = []
@@ -26,7 +24,7 @@ export const getAllNoteSlugs = () => {
 
 export const getNoteBySlug = async (slug: any[]) => {
   const a = slug.join('\\')
-  const b = noteBaseDirectory + '\\' + a
+  const b = noteBaseDirectory + '\\' + a + '.md'
 
   const { data, content } = readMarkdownFile(b)
   const convertedContent = await markdownToHtml(content)
@@ -36,12 +34,6 @@ export const getNoteBySlug = async (slug: any[]) => {
     ...data,
     content: convertedContent,
   }
-}
-
-export const readMarkdownFile = (slug: string) => {
-  const fileName = `${slug}.md`
-  const postContent = fs.readFileSync(fileName, 'utf-8')
-  return matter(postContent)
 }
 
 export const mappingWithTitle = (dir: any, slug: any) => {
@@ -59,7 +51,7 @@ export const notes = noteFloders.map((noteFolder) => {
   const notesDirectory = path.join(noteBaseDirectory, noteFolder)
   const notes = fs.readdirSync(notesDirectory)
   const datas = notes.map((note) => {
-    const slug = note.replace(/\.md$/, '')
+    const slug = mdRemover(note)
     return mappingWithTitle(notesDirectory, slug)
   })
   return { name: noteFolder, value: datas }

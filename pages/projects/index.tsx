@@ -1,6 +1,6 @@
 import React from 'react'
 import ProjectCardList from '@/components/ProjectCardList/ProjectCardList'
-import { getAllProjects } from '@/utils/postUtils'
+import { getAllProjects } from '@/utils/projectUtils'
 
 const index = ({ posts }: any) => {
   return <ProjectCardList posts={posts} />

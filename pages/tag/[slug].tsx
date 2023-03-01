@@ -1,6 +1,7 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { getAllTags, getPostsByTag } from '@/utils/postUtils'
+import { getAllTags } from '@/utils/techUtils'
+import { getPostsByTag } from '@/utils/techUtils'
 import { ParsedUrlQuery } from 'querystring'
 import styled from 'styled-components'
 import SideBar from '@/components/layout/SideBar'
@@ -10,7 +11,6 @@ interface IParams extends ParsedUrlQuery {
 }
 
 const Home = ({ posts, tags }: any) => {
-
   return (
     <HomeLayout>
       <PostCardList posts={posts} />

@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { getPostBySlug } from '@/utils/postUtils'
+import { getTechBySlug } from '@/utils/techUtils'
 import { ParsedUrlQuery } from 'querystring'
 import { IPost } from '@/types/post'
 import PostLender from '@/components/PostLender/PostLender'
@@ -19,7 +19,7 @@ export default PostPage
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams
-  const post = await getPostBySlug(slug, false)
+  const post = await getTechBySlug(slug)
 
   return {
     props: { post },
