@@ -2,7 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import icon_search from '/public/assets/icon_search.svg'
 import Image from 'next/image'
-const SideBar = () => {
+import Link from 'next/link'
+const SideBar = ({ tags }: { tags: { [key: string]: number } }) => {
+  const tagNames = Object.keys(tags)
+
   return (
     <SideBarLayout>
       <Wrap>
@@ -11,11 +14,16 @@ const SideBar = () => {
       </Wrap>
       <BoxTitle>Tags</BoxTitle>
       <List>
-        <Item>React (1)</Item>
-        <Item>Nextjs (12)</Item>
-        <Item>StyledComponent (7)</Item>
-        <Item>css (1)</Item>
-        <Item>none (1)</Item>
+        {tagNames.map((tagName) => {
+          const tagCount = tags[tagName]
+          return (
+            <Item key={tagName}>
+              <Link href={`/tag/${tagName}`}>
+                {tagName} ({tagCount})
+              </Link>
+            </Item>
+          )
+        })}
       </List>
     </SideBarLayout>
   )

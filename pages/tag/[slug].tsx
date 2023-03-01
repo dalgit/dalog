@@ -1,6 +1,6 @@
 import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { getPostsByTag } from '@/utils/postUtils'
+import { getAllTags, getPostsByTag } from '@/utils/postUtils'
 import { ParsedUrlQuery } from 'querystring'
 import styled from 'styled-components'
 import SideBar from '@/components/layout/SideBar'
@@ -9,11 +9,12 @@ interface IParams extends ParsedUrlQuery {
   slug: string
 }
 
-const Home = ({ posts }: any) => {
+const Home = ({ posts, tags }: any) => {
+
   return (
     <HomeLayout>
       <PostCardList posts={posts} />
-      <SideBar />
+      <SideBar tags={tags} />
     </HomeLayout>
   )
 }
@@ -23,9 +24,10 @@ export default Home
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams
   const posts = await getPostsByTag(slug)
+  const tags = await getAllTags()
 
   return {
-    props: { posts },
+    props: { posts, tags },
   }
 }
 

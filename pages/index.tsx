@@ -4,23 +4,21 @@ import { getAllPosts, getAllTags } from '@/utils/postUtils'
 import styled from 'styled-components'
 import SideBar from '@/components/layout/SideBar'
 
-export default function Home({ posts }: IPosts) {
+export default function Home({ posts, tags }: any) {
   return (
     <HomeLayout>
       <PostCardList posts={posts} />
-      <SideBar />
+      <SideBar tags={tags} />
     </HomeLayout>
   )
 }
 
 export async function getStaticProps() {
-  const postsData = await getAllPosts()
-  const test = await getAllTags()
+  const posts = await getAllPosts()
+  const tags = await getAllTags()
 
   return {
-    props: {
-      posts: postsData,
-    },
+    props: { posts, tags },
   }
 }
 
