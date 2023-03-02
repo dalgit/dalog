@@ -11,3 +11,19 @@ export interface IPost {
 export type IPosts = {
   posts: IPost[]
 }
+
+interface IPostt {
+  postSlug: string
+  content: string
+}
+
+export interface ITechData {
+  tags: string[]
+  title: string
+  createdDate: string
+  thumbnail: string
+}
+
+export type ITechPost = IPostt & ITechData
+
+export type ITechPosts = ITechPost[]
