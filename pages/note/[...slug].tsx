@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import NoteItem from '@/components/NoteItem/NoteItem'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { getAllNoteSlugs, notes } from '@/utils/noteUtils'
+import { getAllNoteSlugs, getNoteCategories } from '@/utils/noteUtils'
 import { getNoteBySlug } from '@/utils/noteUtils'
 
 interface IParams extends ParsedUrlQuery {
@@ -57,7 +57,7 @@ const IndexLayout = styled.div`
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams
 
-  const notess = notes
+  const notess = getNoteCategories()
   const note = await getNoteBySlug(slug)
   return {
     props: { notess, note },
