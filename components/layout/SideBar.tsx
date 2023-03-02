@@ -3,15 +3,37 @@ import styled from 'styled-components'
 import icon_search from '/public/assets/icon_search.svg'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+
 const SideBar = ({ tags }: { tags: { [key: string]: number } }) => {
   const tagNames = Object.keys(tags)
+  const router = useRouter()
+
+  const [searchKeword, setSearchKeword] = useState('')
+
+  const search = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    if (!searchKeword) {
+      router.push({ pathname: '/' })
+    } else {
+      router.push({ pathname: '/search', query: { keyword: searchKeword } })
+    }
+  }
 
   return (
     <SideBarLayout>
-      <Wrap>
-        <Image src={icon_search} width={20} alt="icon_search" />
-        <Input placeholder="Search for keword" />
-      </Wrap>
+      <Form onSubmit={search}>
+        <Button type="submit">
+          <Image src={icon_search} width={20} alt="icon_search" />
+        </Button>
+        <Input
+          type="text"
+          onChange={(e) => setSearchKeword(e.target.value)}
+          placeholder="Search for keword"
+        />
+      </Form>
       <BoxTitle>Tags</BoxTitle>
       <List>
         {tagNames.map((tagName) => {
@@ -30,7 +52,14 @@ const SideBar = ({ tags }: { tags: { [key: string]: number } }) => {
 }
 
 export default SideBar
-const Wrap = styled.div`
+
+const Button = styled.button`
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+`
+const Form = styled.form`
   display: flex;
   align-items: center;
   margin-bottom: 40px;

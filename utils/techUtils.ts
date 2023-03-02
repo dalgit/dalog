@@ -4,20 +4,12 @@ import { readMarkdownFile } from './postUtils'
 import { markdownToHtml } from './postUtils'
 import { markdownToHtmlOnlyP } from './postUtils'
 import { mdRemover } from './common'
+import { IPost } from '@/types/post'
 
 const techDirectory = path.join(process.cwd(), 'posts', 'tech')
 const techFiles = fs.readdirSync(techDirectory)
 
-interface IPost {
-  tags: string[]
-  title: string
-  content: string
-  createdDate: string
-  postSlug: string
-  thumbnail: string
-}
-
-export const getAllTechs = async (): Promise<IPost[]> => {
+export const getAllTechs = async () => {
   const posts: any = Promise.all(
     techFiles.map(async (techFile) => {
       const slug = mdRemover(techFile)
@@ -62,8 +54,19 @@ export const getAllTags = async () => {
   return tagsStore
 }
 
-export const getPostsByTag = async (tag: string): Promise<IPost[]> => {
+export const getPostsByTag = async (tag: string) => {
   const posts = await techs
-  const result = posts.filter((post) => post.tags?.includes(tag))
+  const result = posts.filter((post: any) => post.tags?.includes(tag))
   return result
+}
+
+export const getSearchedPosts = async (keyword: string | undefined) => {
+  if (!keyword) return []
+
+  const posts = await techs
+  
+  return posts.filter(
+    (post: IPost) =>
+      post.title.includes(keyword) || post.content.includes(keyword),
+  )
 }
