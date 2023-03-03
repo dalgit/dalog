@@ -1,28 +1,32 @@
-import React from 'react'
 import styled from 'styled-components'
-import NoteItem from '@/components/NoteItem/NoteItem'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { getNoteSlugs, getNoteCategories } from '@/utils/noteUtils'
-import { getNoteBySlug } from '@/utils/noteUtils'
+import {
+  getNoteSlugs,
+  getNoteCategories,
+  getNoteBySlug,
+} from '@/utils/noteUtils'
+import { INote, INoteCategories } from '@/types/post'
+import NoteSideBar from '@/components/NoteSideBar/NoteSideBar'
 
 interface IParams extends ParsedUrlQuery {
   slug: [string, string]
 }
 
-const NotePage = ({ categories, note }: any) => {
+interface NotePageProps {
+  categories: INoteCategories
+  note: INote
+}
+
+const NotePage = ({ categories, note }: NotePageProps) => {
   return (
-    <IndexLayout>
-      <Tmp>
-        {categories.map((category: any, idx: number) => (
-          <NoteItem key={idx} category={category} />
-        ))}
-      </Tmp>
+    <NotePageLayout>
+      <NoteSideBar categories={categories} />
       <ContentBox>
-        <ContentTitle>{note.title}</ContentTitle>
-        <Content dangerouslySetInnerHTML={{ __html: note.content }}></Content>
+        <h1>{note.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: note.content }}></div>
       </ContentBox>
-    </IndexLayout>
+    </NotePageLayout>
   )
 }
 
@@ -39,18 +43,7 @@ const ContentBox = styled.div`
   }
 `
 
-const ContentTitle = styled.h1``
-const Content = styled.div``
-const Tmp = styled.ul`
-  border-right: 2px solid #eaeaea;
-  width: 200px;
-
-  > div {
-    margin-bottom: 20px;
-  }
-`
-
-const IndexLayout = styled.div`
+const NotePageLayout = styled.div`
   display: flex;
   margin-bottom: 100px;
 `

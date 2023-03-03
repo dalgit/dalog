@@ -36,3 +36,17 @@ export interface INote {
 }
 
 export type ITechPosts = ITechPost[]
+
+export interface Topic {
+  slug: string
+  title: string
+}
+
+export interface INoteCategory {
+  name: string
+  topics: Topics
+}
+
+export type Topics = Topic[]
+
+export type INoteCategories = INoteCategory[]

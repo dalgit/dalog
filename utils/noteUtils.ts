@@ -2,12 +2,12 @@ import path from 'path'
 import fs from 'fs'
 import matter from 'gray-matter'
 import { readMarkdownFile, markdownToHtml, mdRemover } from './postUtils'
-import { INote, INoteData } from '@/types/post'
+import { INote, INoteData, Topics, INoteCategories } from '@/types/post'
 
 const noteDirectory = path.join(process.cwd(), 'posts', 'note')
 const noteFolders = fs.readdirSync(noteDirectory)
 
-const getNoteList = (folderPath: string) => {
+const getTopics = (folderPath: string): Topics => {
   const noteFiles = fs.readdirSync(folderPath)
 
   return noteFiles.map((noteFile) => {
@@ -20,7 +20,7 @@ const getNoteList = (folderPath: string) => {
   })
 }
 
-const getNoteTitle = (notePath: string) => {
+const getNoteTitle = (notePath: string): string => {
   const note = fs.readFileSync(notePath)
 
   const {
@@ -30,11 +30,12 @@ const getNoteTitle = (notePath: string) => {
   return title
 }
 
-export const getNoteCategories = () => {
+export const getNoteCategories = (): INoteCategories => {
   return noteFolders.map((folder) => {
     const folderPath = path.join(noteDirectory, folder)
-    const noteList = getNoteList(folderPath)
-    return { folder, noteList }
+    const topics = getTopics(folderPath)
+
+    return { name: folder, topics }
   })
 }
 
