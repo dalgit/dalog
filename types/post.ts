@@ -24,6 +24,15 @@ export interface ITechData {
   thumbnail: string
 }
 
-export type ITechPost = IPostt & ITechData
+export interface INoteData {
+  title: string
+  createdDate: string
+}
+export interface INote {
+  postSlug: [string, string]
+  content: string
+  title: string
+  createdDate: string
+}
 
 export type ITechPosts = ITechPost[]

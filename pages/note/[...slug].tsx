@@ -3,19 +3,19 @@ import styled from 'styled-components'
 import NoteItem from '@/components/NoteItem/NoteItem'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { getAllNoteSlugs, getNoteCategories } from '@/utils/noteUtils'
+import { getNoteSlugs, getNoteCategories } from '@/utils/noteUtils'
 import { getNoteBySlug } from '@/utils/noteUtils'
 
 interface IParams extends ParsedUrlQuery {
-  slug: string[]
+  slug: [string, string]
 }
 
-const index = ({ notess, note }: any) => {
+const NotePage = ({ categories, note }: any) => {
   return (
     <IndexLayout>
       <Tmp>
-        {notess.map((note: any, idx: number) => (
-          <NoteItem key={idx} note={note} />
+        {categories.map((category: any, idx: number) => (
+          <NoteItem key={idx} category={category} />
         ))}
       </Tmp>
       <ContentBox>
@@ -26,7 +26,8 @@ const index = ({ notess, note }: any) => {
   )
 }
 
-export default index
+export default NotePage
+
 const ContentBox = styled.div`
   padding-left: 20px;
 
@@ -57,22 +58,22 @@ const IndexLayout = styled.div`
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams
 
-  const notess = getNoteCategories()
+  const categories = getNoteCategories()
   const note = await getNoteBySlug(slug)
+
   return {
-    props: { notess, note },
+    props: { categories, note },
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const noteSlugs = getAllNoteSlugs()
-  return {
-    paths: noteSlugs.map((noteSlug: any) => ({
-      params: {
-        slug: noteSlug,
-      },
-    })),
+  const noteSlugs = getNoteSlugs()
+  const paths = noteSlugs.map((slug) => ({
+    params: { slug },
+  }))
 
+  return {
+    paths,
     fallback: false,
   }
 }

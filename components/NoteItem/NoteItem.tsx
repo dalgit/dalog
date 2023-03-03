@@ -7,15 +7,16 @@ import fr from '/public/assets/fr.svg'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
-const NoteItem = ({ note }: any) => {
+const NoteItem = ({ category }: any) => {
+  const { folder, noteList } = category
   const [isOpen, setIsOpen] = useState(false)
-  const listName = capitalizer(note.name)
+  const listName = capitalizer(folder)
   const router = useRouter()
   const currentQuery = router.query.slug?.[0]
   const currentPath = router.asPath
 
   useEffect(() => {
-    if (currentQuery === note.name) {
+    if (currentQuery === folder) {
       setIsOpen(true)
     }
   }, [])
@@ -31,17 +32,14 @@ const NoteItem = ({ note }: any) => {
 
       <ul>
         {isOpen &&
-          note.value.map((item: any) => {
+          noteList.map((note: any) => {
+            const { slug, title } = note
             return (
               <Item
-                isCurrentNote={
-                  `/note/${note.name}/${item.slug}` === currentPath
-                }
-                key={item}
+                isCurrentNote={`/note/${folder}/${slug}` === currentPath}
+                key={slug}
               >
-                <Link href={`/note/${note.name}/${item.slug}`}>
-                  {item.title}
-                </Link>
+                <Link href={`/note/${folder}/${slug}`}>{title}</Link>
               </Item>
             )
           })}

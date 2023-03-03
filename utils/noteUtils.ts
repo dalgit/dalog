@@ -1,55 +1,61 @@
 import path from 'path'
 import fs from 'fs'
 import matter from 'gray-matter'
-import { mdRemover } from './common'
-import { readMarkdownFile, markdownToHtml } from './postUtils'
+import { readMarkdownFile, markdownToHtml, mdRemover } from './postUtils'
+import { INote, INoteData } from '@/types/post'
 
-const noteBaseDirectory = path.join(process.cwd(), 'posts', 'note')
-const noteFolders = fs.readdirSync(noteBaseDirectory)
+const noteDirectory = path.join(process.cwd(), 'posts', 'note')
+const noteFolders = fs.readdirSync(noteDirectory)
 
-const getNotesInFolder = (folderName: string) => {
-  const folderDirectory = path.join(noteBaseDirectory, folderName)
-  const notes = fs.readdirSync(folderDirectory)
-  const datas = notes.map((note) => {
-    const slug = mdRemover(note)
-    return mappingSlugAndTitle(folderName, slug)
+const getNoteList = (folderPath: string) => {
+  const noteFiles = fs.readdirSync(folderPath)
+
+  return noteFiles.map((noteFile) => {
+    const notePath = path.join(folderPath, noteFile)
+
+    const slug = mdRemover(noteFile)
+    const title = getNoteTitle(notePath)
+
+    return { slug, title }
   })
-  return { name: folderName, value: datas }
 }
 
-export const mappingSlugAndTitle = (folderName: string, slug: string) => {
-  const noteDirectory = path.join(noteBaseDirectory, folderName, `${slug}.md`)
-  const note = fs.readFileSync(noteDirectory)
+const getNoteTitle = (notePath: string) => {
+  const note = fs.readFileSync(notePath)
+
   const {
     data: { title },
   } = matter(note)
 
-  return { slug, title }
+  return title
 }
 
-export const getNoteCategories = () => noteFolders.map(getNotesInFolder)
+export const getNoteCategories = () => {
+  return noteFolders.map((folder) => {
+    const folderPath = path.join(noteDirectory, folder)
+    const noteList = getNoteList(folderPath)
+    return { folder, noteList }
+  })
+}
 
-export const getAllNoteSlugs = () =>
-  noteFolders.flatMap((noteFolder) => {
-    const notesDirectory = path.join(noteBaseDirectory, noteFolder)
-    const noteFileNames = fs.readdirSync(notesDirectory)
-    return noteFileNames.map((noteFileName) => [
-      noteFolder,
-      mdRemover(noteFileName),
-    ])
+export const getNoteSlugs = (): string[][] =>
+  noteFolders.flatMap((folder) => {
+    const notesPath = path.join(noteDirectory, folder)
+    const notes = fs.readdirSync(notesPath)
+
+    return notes.map((note) => [folder, mdRemover(note)])
   })
 
-export const getNoteBySlug = async (slug: string[]) => {
-  const [folderName, fileSlug] = slug
+export const getNoteBySlug = async (slug: [string, string]): Promise<INote> => {
+  const [folder, fileSlug] = slug
+  const notePath = path.join(noteDirectory, folder, `${fileSlug}.md`)
 
-  const fileUrl = path.join(noteBaseDirectory, folderName, `${fileSlug}.md`)
-
-  const { data, content } = readMarkdownFile(fileUrl)
-  const convertedContent = await markdownToHtml(content)
+  const { data, content } = await readMarkdownFile(notePath)
+  const htmlContent = await markdownToHtml(content)
 
   return {
     postSlug: slug,
-    ...data,
-    content: convertedContent,
+    content: htmlContent,
+    ...(data as INoteData),
   }
 }
