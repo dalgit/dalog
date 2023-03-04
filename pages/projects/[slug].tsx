@@ -2,16 +2,22 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { getProjectBySlug } from '@/utils/projectUtils'
 import { ParsedUrlQuery } from 'querystring'
 import PostLender from '@/components/PostLender/PostLender'
+import { projectSlugs } from '@/utils/projectUtils'
+import { IProjectPost } from '@/types/post'
 
 interface IParams extends ParsedUrlQuery {
   slug: string
 }
 
-const pro = ({ post }: any) => {
+interface ProjectListPageProps {
+  post: IProjectPost
+}
+
+const ProjectListPage = ({ post }: ProjectListPageProps) => {
   return <PostLender post={post} />
 }
 
-export default pro
+export default ProjectListPage
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams
@@ -23,8 +29,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = projectSlugs.map((slug) => ({
+    params: { slug },
+  }))
+
   return {
-    paths: [{ params: { slug: 'blogggg' } }, { params: { slug: 'haha' } }],
+    paths,
     fallback: false,
   }
 }

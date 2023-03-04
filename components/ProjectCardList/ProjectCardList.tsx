@@ -1,11 +1,13 @@
 import React from 'react'
 import ProjectCard from '../ProjectCard/ProjectCard'
 import styled from 'styled-components'
-const ProjectCardList = ({ posts }: any) => {
+import { IProjectPost, IProjectPosts } from '@/types/post'
+
+const ProjectCardList = ({ posts }: ProjectCardListProps) => {
   return (
     <ProjectCardListLayout>
-      {posts.map((post: any) => (
-        <ProjectCard key={post.slug} post={post} />
+      {posts.map((post: IProjectPost) => (
+        <ProjectCard key={post.postSlug} post={post} />
       ))}
     </ProjectCardListLayout>
   )
@@ -21,3 +23,6 @@ const ProjectCardListLayout = styled.div`
 
   margin-bottom: 50px;
 `
+interface ProjectCardListProps {
+  posts: IProjectPosts
+}

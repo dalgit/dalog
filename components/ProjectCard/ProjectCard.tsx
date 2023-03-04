@@ -2,14 +2,23 @@ import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
-const ProjectCard = ({ post }: any) => {
-  const thumbnailPath = `/posts/${post?.postSlug}/${post?.thumbnail}`
+import { IProjectPost } from '@/types/post'
+
+interface ProjectCardProps {
+  post: IProjectPost
+}
+
+const ProjectCard = ({ post }: ProjectCardProps) => {
+  const { postSlug, thumbnail, type, createdDate, title, description } = post
+  const thumbnailPath = `/posts/${postSlug}/${thumbnail}`
+  const postUrl = `/projects/${postSlug}`
+
   return (
     <ProjCardLayout>
-      <Link href={`/projects/${post?.postSlug}`}>
+      <Link href={postUrl}>
         <Image
           src={thumbnailPath}
-          alt="tmp"
+          alt="thumbnail"
           width={280}
           height={170}
           style={{
@@ -18,11 +27,11 @@ const ProjectCard = ({ post }: any) => {
         />
         <ContentBox>
           <BoxHeader>
-            <span>{post?.type}</span>
-            <span>{post?.createdDate}</span>
+            <span>{type}</span>
+            <span>{createdDate}</span>
           </BoxHeader>
-          <Title>{post?.title}</Title>
-          <Content>{post?.description}</Content>
+          <Title>{title}</Title>
+          <Content>{description}</Content>
         </ContentBox>
       </Link>
     </ProjCardLayout>
@@ -30,6 +39,7 @@ const ProjectCard = ({ post }: any) => {
 }
 
 export default ProjectCard
+
 const ContentBox = styled.div`
   padding: 15px;
   height: 110px;
