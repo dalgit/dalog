@@ -12,13 +12,13 @@ interface TechPostListPageProps {
 
 const TechPostListPage = ({ posts, tags }: TechPostListPageProps) => {
   return (
-    <HomeLayout>
-      <TechPostCardList posts={posts} />
-      <SideBar>
-        <TechSearchBar />
-        <TechTagList tags={tags} />
-      </SideBar>
-    </HomeLayout>
+      <HomeLayout>
+        <TechPostCardList posts={posts} />
+        <SideBar>
+          <TechSearchBar />
+          <TechTagList tags={tags} />
+        </SideBar>
+      </HomeLayout>
   )
 }
 

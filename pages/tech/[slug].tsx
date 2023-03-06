@@ -4,7 +4,8 @@ import { ParsedUrlQuery } from 'querystring'
 import BlogPost from '@/components/BlogPost/BlogPost'
 import { ITechPost } from '@/types/post'
 import { getTechSlugs } from '@/utils/techUtils'
-
+import { NextSeo } from 'next-seo'
+import { HOME_URL } from '@/data/meta'
 type PostPageProps = {
   post: ITechPost
 }
@@ -14,7 +15,22 @@ interface IParams extends ParsedUrlQuery {
 }
 
 const TechPostDetailPage = ({ post }: PostPageProps) => {
-  return <BlogPost post={post} />
+  return (
+    <>
+      <NextSeo
+        title={post.title}
+        description={`Post related to ${post.title}`}
+        canonical={`${HOME_URL}/tech/${post.postSlug}`}
+        openGraph={{
+          url: `${HOME_URL}/tech/${post.postSlug}`,
+          type: 'article',
+          article: { publishedTime: post.createdDate },
+          images: [{ url: `/posts/${post.postSlug}/${post.thumbnail}` }],
+        }}
+      />
+      <BlogPost post={post} />
+    </>
+  )
 }
 
 export default TechPostDetailPage

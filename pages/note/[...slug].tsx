@@ -8,7 +8,8 @@ import {
 } from '@/utils/noteUtils'
 import { INote, INoteCategories } from '@/types/post'
 import NoteSideBar from '@/components/NoteSideBar/NoteSideBar'
-
+import { HOME_URL } from '@/data/meta'
+import { NextSeo } from 'next-seo'
 interface IParams extends ParsedUrlQuery {
   slug: [string, string]
 }
@@ -20,13 +21,25 @@ interface NotePageProps {
 
 const NotePage = ({ categories, note }: NotePageProps) => {
   return (
-    <NotePageLayout>
-      <NoteSideBar categories={categories} />
-      <ContentBox>
-        <h1>{note.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: note.content }}></div>
-      </ContentBox>
-    </NotePageLayout>
+    <>
+      <NextSeo
+        title={note.title}
+        description={`Records related to ${note.title}`}
+        canonical={`${HOME_URL}/${note.postSlug[0]}/${note.postSlug[1]}`}
+        openGraph={{
+          url: `${HOME_URL}/${note.postSlug[0]}/${note.postSlug[1]}`,
+          type: 'article',
+          article: { publishedTime: note.createdDate },
+        }}
+      />
+      <NotePageLayout>
+        <NoteSideBar categories={categories} />
+        <ContentBox>
+          <h1>{note.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: note.content }}></div>
+        </ContentBox>
+      </NotePageLayout>
+    </>
   )
 }
 

@@ -18,6 +18,7 @@ interface TechPostSearchPage {
   tags: { [tag: string]: number }
   keyword: string
 }
+
 const TechPostSearchPage = ({ posts, tags, keyword }: TechPostSearchPage) => {
   const postCount = posts.length
   const hasPosts = postCount > 0

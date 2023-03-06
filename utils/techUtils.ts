@@ -9,11 +9,12 @@ import {
 
 import { ITechPosts, ITechPost, ITechPostMatterData } from '@/types/post'
 
+const techDirectory = path.join(process.cwd(), 'posts', 'tech')
+
 export const getTechSlugs = async () => {
   const techs = await getAllTechs()
   return techs.map((tech) => tech.postSlug)
 }
-const techDirectory = path.join(process.cwd(), 'posts', 'tech')
 
 export const getAllTechs = async (): Promise<ITechPosts> => {
   const techFiles = await fs.readdir(techDirectory)

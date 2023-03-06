@@ -4,7 +4,8 @@ import { ParsedUrlQuery } from 'querystring'
 import BlogPost from '@/components/BlogPost/BlogPost'
 import { projectSlugs } from '@/utils/projectUtils'
 import { IProjectPost } from '@/types/post'
-
+import { NextSeo } from 'next-seo'
+import { HOME_URL } from '@/data/meta'
 interface IParams extends ParsedUrlQuery {
   slug: string
 }
@@ -14,7 +15,22 @@ interface ProjectListPageProps {
 }
 
 const ProjectListPage = ({ post }: ProjectListPageProps) => {
-  return <BlogPost post={post} />
+  return (
+    <>
+      <NextSeo
+        title={post.title}
+        description={post.description}
+        canonical={`${HOME_URL}/projects/${post.postSlug}`}
+        openGraph={{
+          url: `${HOME_URL}/${post.postSlug}`,
+          type: 'article',
+          article: { publishedTime: post.createdDate },
+          images: [{ url: `/posts/${post.postSlug}/${post.thumbnail}` }],
+        }}
+      />
+      <BlogPost post={post} />
+    </>
+  )
 }
 
 export default ProjectListPage
