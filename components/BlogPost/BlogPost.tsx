@@ -2,39 +2,37 @@ import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getIsProject, getIsTech } from '@/utils/getPostType'
+import { IProjectPost, ITechPost } from '@/types/post'
 
-import { IPost } from '@/types/post'
-
-type PostLenderProps = {
-  post: IPost
+type BlogPostProps = {
+  post: IProjectPost | ITechPost
 }
 
-const PostLender = ({ post }: PostLenderProps) => {
-  const {
-    title,
-    createdDate,
-    tags,
-    content,
-    postSlug,
-    thumbnail,
-    description,
-  } = post
+const BlogPost = ({ post }: BlogPostProps) => {
+  const { title, createdDate, thumbnail, content, postSlug } = post
 
   const thumbnailPath = `/posts/${postSlug}/${thumbnail}`
+
+  const isProject = getIsProject(post)
+  const isTech = getIsTech(post)
+
   return (
     <article>
       <HeadBox>
         <h1>{title}</h1>
         <HeadSubBox>
           <div>
-            {tags ? (
-              tags.map((tag) => (
+            {isTech &&
+              post.tags.map((tag) => (
                 <Link href={'/'} key={tag}>
                   #{tag}
                 </Link>
-              ))
-            ) : (
-              <h3>{description}</h3>
+              ))}
+            {isProject && (
+              <h3>
+                {post.description}-{post.type}
+              </h3>
             )}
           </div>
           <Date>{createdDate}</Date>
@@ -48,7 +46,7 @@ const PostLender = ({ post }: PostLenderProps) => {
   )
 }
 
-export default PostLender
+export default BlogPost
 
 const ImageWrap = styled.div`
   margin: 30px 0px;
