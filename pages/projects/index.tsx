@@ -1,12 +1,13 @@
 import React from 'react'
 import ProjectCardList from '@/components/ProjectCardList/ProjectCardList'
 import { getAllProjects } from '@/utils/projectUtils'
+import { IProjectPost } from '@/types/post'
 
-const index = ({ posts }: any) => {
+const ProjectListPage = ({ posts }: ProjectListPageProps) => {
   return <ProjectCardList posts={posts} />
 }
 
-export default index
+export default ProjectListPage
 
 export async function getStaticProps() {
   const postsData = await getAllProjects()
@@ -15,4 +16,8 @@ export async function getStaticProps() {
       posts: postsData,
     },
   }
+}
+
+interface ProjectListPageProps {
+  posts: IProjectPost[]
 }

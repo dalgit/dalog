@@ -1,21 +1,23 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { getTechBySlug } from '@/utils/techUtils'
 import { ParsedUrlQuery } from 'querystring'
-import { IPost } from '@/types/post'
-import PostLender from '@/components/PostLender/PostLender'
+import BlogPost from '@/components/BlogPost/BlogPost'
+import { ITechPost } from '@/types/post'
+import { getTechSlugs } from '@/utils/techUtils'
+
 type PostPageProps = {
-  post: IPost
+  post: ITechPost
 }
 
 interface IParams extends ParsedUrlQuery {
   slug: string
 }
 
-const PostPage = ({ post }: PostPageProps) => {
-  return <PostLender post={post} />
+const TechPostDetailPage = ({ post }: PostPageProps) => {
+  return <BlogPost post={post} />
 }
 
-export default PostPage
+export default TechPostDetailPage
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams
@@ -27,12 +29,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const slugs = await getTechSlugs()
+  const paths = slugs.map((slug) => ({
+    params: { slug },
+  }))
+
   return {
-    paths: [
-      { params: { slug: 'tmp' } },
-      { params: { slug: 'tmp2' } },
-      { params: { slug: 'tmp3' } },
-    ],
+    paths: paths,
     fallback: false,
   }
 }

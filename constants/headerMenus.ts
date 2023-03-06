@@ -6,5 +6,5 @@ export const MAIN_MENUS = [
 export const SUB_MENUS = [
   { id: 1, name: 'Tech', path: '/' },
   { id: 2, name: 'Proj', path: '/projects' },
-  { id: 2, name: 'Note', path: '/note/react/1' },
+  { id: 3, name: 'Note', path: '/note/react/1' },
 ]

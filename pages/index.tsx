@@ -1,22 +1,24 @@
-import PostCardList from '@/components/PostCardList/PostCardList'
+import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
 import { getAllTechs, getAllTags } from '@/utils/techUtils'
 import styled from 'styled-components'
-import SideBar from '@/components/layout/SideBar'
-import { getAllTags as a } from '@/utils/techUtils'
+import TechTagList from '@/components/TechTagList/TechTagList'
+import TechSearchBar from '@/components/TechSearchBar/TechSearchBar'
 
 export default function Home({ posts, tags }: any) {
   return (
     <HomeLayout>
-      <PostCardList posts={posts} />
-      <SideBar tags={tags} />
+      <TechPostCardList posts={posts} />
+      <SideBar>
+        <TechSearchBar />
+        <TechTagList tags={tags} />
+      </SideBar>
     </HomeLayout>
   )
 }
 
 export async function getStaticProps() {
   const posts = await getAllTechs()
-  const tags = await a()
-  console.log(tags)
+  const tags = await getAllTags()
   return {
     props: { posts, tags },
   }
@@ -24,4 +26,9 @@ export async function getStaticProps() {
 
 const HomeLayout = styled.div`
   display: flex;
+`
+
+const SideBar = styled.div`
+  font-size: 14px;
+  width: 330px;
 `

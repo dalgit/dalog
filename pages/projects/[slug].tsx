@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { getProjectBySlug } from '@/utils/projectUtils'
 import { ParsedUrlQuery } from 'querystring'
-import PostLender from '@/components/PostLender/PostLender'
+import BlogPost from '@/components/BlogPost/BlogPost'
 import { projectSlugs } from '@/utils/projectUtils'
 import { IProjectPost } from '@/types/post'
 
@@ -14,7 +14,7 @@ interface ProjectListPageProps {
 }
 
 const ProjectListPage = ({ post }: ProjectListPageProps) => {
-  return <PostLender post={post} />
+  return <BlogPost post={post} />
 }
 
 export default ProjectListPage

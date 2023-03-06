@@ -1,19 +1,19 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-import { IPost } from '@/types/post'
+import { ITechPost } from '@/types/post'
 import Link from 'next/link'
 
 type PostCardProps = {
-  post: IPost
+  post: ITechPost
 }
 
-const PostCard = ({ post }: PostCardProps) => {
+const TechPostCard = ({ post }: PostCardProps) => {
   const { title, content, tags, createdDate, postSlug, thumbnail } = post
   const thumbnailPath = `/posts/${postSlug}/${thumbnail}`
 
   return (
-    <PostCardLayout>
-      <Link href={`/posts/${postSlug}`}>
+    <TechPostCardLayout>
+      <Link href={`/tech/${postSlug}`}>
         <Image src={thumbnailPath} width={180} height={150} alt="tmp" />
       </Link>
       <ContentBox>
@@ -24,19 +24,19 @@ const PostCard = ({ post }: PostCardProps) => {
             </Link>
           ))}
         </Tags>
-        <Link href={`/posts/${postSlug}`}>
+        <Link href={`/tech/${postSlug}`}>
           <Title>{title}</Title>
         </Link>
         <ContentPreview dangerouslySetInnerHTML={{ __html: content }} />
         <Date>{createdDate}</Date>
       </ContentBox>
-    </PostCardLayout>
+    </TechPostCardLayout>
   )
 }
 
-export default PostCard
+export default TechPostCard
 
-const PostCardLayout = styled.article`
+const TechPostCardLayout = styled.article`
   display: flex;
   height: 150px;
 `

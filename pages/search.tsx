@@ -1,11 +1,12 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
 import styled from 'styled-components'
-import PostCardList from '@/components/PostCardList/PostCardList'
-import SideBar from '@/components/layout/SideBar'
+import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
 import { getSearchedPosts } from '@/utils/techUtils'
 import { ParsedUrlQuery } from 'querystring'
 import { getAllTags } from '@/utils/techUtils'
+import TechSearchBar from '@/components/TechSearchBar/TechSearchBar'
+import TechTagList from '@/components/TechTagList/TechTagList'
 interface IQuery extends ParsedUrlQuery {
   keyword: string | undefined
 }
@@ -23,9 +24,10 @@ const Home = ({ posts, tags, keyword }: any) => {
             : `'${keyword}'에 대한 결과가 없습니다.`}
         </ResultText>
 
-        <PostCardList posts={posts} />
+        <TechPostCardList posts={posts} />
       </div>
-      <SideBar tags={tags} />
+      <TechSearchBar />
+      <TechTagList tags={tags} />
     </HomeLayout>
   )
 }

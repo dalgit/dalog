@@ -4,22 +4,33 @@ import { getAllTags } from '@/utils/techUtils'
 import { getPostsByTag } from '@/utils/techUtils'
 import { ParsedUrlQuery } from 'querystring'
 import styled from 'styled-components'
-import SideBar from '@/components/layout/SideBar'
-import PostCardList from '@/components/PostCardList/PostCardList'
+import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
+import { ITechPosts } from '@/types/post'
+import { getAllTagSlugs } from '@/utils/techUtils'
+import TechSearchBar from '@/components/TechSearchBar/TechSearchBar'
+import TechTagsList from '@/components/TechTagList/TechTagList'
 interface IParams extends ParsedUrlQuery {
   slug: string
 }
 
-const Home = ({ posts, tags }: any) => {
+interface TagListPageProps {
+  posts: ITechPosts
+  tags: { [tag: string]: number }
+}
+
+const TagListPage = ({ posts, tags }: TagListPageProps) => {
   return (
     <HomeLayout>
-      <PostCardList posts={posts} />
-      <SideBar tags={tags} />
+      <TechPostCardList posts={posts} />
+      <SideBar>
+        <TechSearchBar />
+        <TechTagsList tags={tags} />
+      </SideBar>
     </HomeLayout>
   )
 }
 
-export default Home
+export default TagListPage
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams
@@ -32,16 +43,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const slugs = await getAllTagSlugs()
+
+  const paths = slugs.map((slug) => ({
+    params: { slug },
+  }))
+
   return {
-    paths: [
-      { params: { slug: 'a' } },
-      { params: { slug: 'b' } },
-      { params: { slug: 'c' } },
-    ],
+    paths,
     fallback: false,
   }
 }
 
 const HomeLayout = styled.div`
   display: flex;
+`
+
+const SideBar = styled.div`
+  font-size: 14px;
+  width: 330px;
 `
