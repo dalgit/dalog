@@ -2,7 +2,7 @@ import path from 'path'
 import fs from 'fs'
 import matter from 'gray-matter'
 import { readMarkdownFile, markdownToHtml, mdRemover } from './postUtils'
-import { INote, INoteData, Topics, INoteCategories } from '@/types/post'
+import { INote, INoteMatterData, Topics, INoteCategories } from '@/types/post'
 
 const noteDirectory = path.join(process.cwd(), 'posts', 'note')
 const noteFolders = fs.readdirSync(noteDirectory)
@@ -57,6 +57,6 @@ export const getNoteBySlug = async (slug: [string, string]): Promise<INote> => {
   return {
     postSlug: slug,
     content: htmlContent,
-    ...(data as INoteData),
+    ...(data as INoteMatterData),
   }
 }

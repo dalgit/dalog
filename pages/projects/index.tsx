@@ -1,7 +1,7 @@
 import React from 'react'
 import ProjectCardList from '@/components/ProjectCardList/ProjectCardList'
 import { getAllProjects } from '@/utils/projectUtils'
-import { IProjectPost } from '@/types/post'
+import { IProjectPosts } from '@/types/post'
 
 const ProjectListPage = ({ posts }: ProjectListPageProps) => {
   return <ProjectCardList posts={posts} />
@@ -19,5 +19,5 @@ export async function getStaticProps() {
 }
 
 interface ProjectListPageProps {
-  posts: IProjectPost[]
+  posts: IProjectPosts
 }

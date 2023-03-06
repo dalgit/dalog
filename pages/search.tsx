@@ -7,11 +7,18 @@ import { ParsedUrlQuery } from 'querystring'
 import { getAllTags } from '@/utils/techUtils'
 import TechSearchBar from '@/components/TechSearchBar/TechSearchBar'
 import TechTagList from '@/components/TechTagList/TechTagList'
+import { ITechPosts } from '@/types/post'
+
 interface IQuery extends ParsedUrlQuery {
   keyword: string | undefined
 }
 
-const Home = ({ posts, tags, keyword }: any) => {
+interface TechPostSearchPage {
+  posts: ITechPosts
+  tags: { [tag: string]: number }
+  keyword: string
+}
+const TechPostSearchPage = ({ posts, tags, keyword }: TechPostSearchPage) => {
   const postCount = posts.length
   const hasPosts = postCount > 0
 
@@ -26,13 +33,15 @@ const Home = ({ posts, tags, keyword }: any) => {
 
         <TechPostCardList posts={posts} />
       </div>
-      <TechSearchBar />
-      <TechTagList tags={tags} />
+      <SideBar>
+        <TechSearchBar />
+        <TechTagList tags={tags} />
+      </SideBar>
     </HomeLayout>
   )
 }
 
-export default Home
+export default TechPostSearchPage
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { keyword } = query as IQuery
@@ -55,4 +64,9 @@ const ResultText = styled.span`
   background-color: #7e7979;
   color: white;
   padding: 5px;
+`
+
+const SideBar = styled.div`
+  font-size: 14px;
+  width: 330px;
 `

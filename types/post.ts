@@ -1,4 +1,4 @@
-export interface IProjectData {
+export interface IProjectMatterData {
   title: string
   createdDate: string
   thumbnail: string
@@ -6,14 +6,14 @@ export interface IProjectData {
   type: string
 }
 
-export interface ITechData {
+export interface ITechPostMatterData {
   tags: string[]
   title: string
   createdDate: string
   thumbnail: string
 }
 
-export interface INoteData {
+export interface INoteMatterData {
   title: string
   createdDate: string
 }
@@ -60,3 +60,4 @@ export interface INoteCategory {
 export type Topics = Topic[]
 
 export type INoteCategories = INoteCategory[]
+

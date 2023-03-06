@@ -3,8 +3,14 @@ import { getAllTechs, getAllTags } from '@/utils/techUtils'
 import styled from 'styled-components'
 import TechTagList from '@/components/TechTagList/TechTagList'
 import TechSearchBar from '@/components/TechSearchBar/TechSearchBar'
+import { ITechPosts } from '@/types/post'
 
-export default function Home({ posts, tags }: any) {
+interface TechPostListPageProps {
+  posts: ITechPosts
+  tags: { [tag: string]: number }
+}
+
+const TechPostListPage = ({ posts, tags }: TechPostListPageProps) => {
   return (
     <HomeLayout>
       <TechPostCardList posts={posts} />
@@ -15,6 +21,8 @@ export default function Home({ posts, tags }: any) {
     </HomeLayout>
   )
 }
+
+export default TechPostListPage
 
 export async function getStaticProps() {
   const posts = await getAllTechs()

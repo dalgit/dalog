@@ -1,5 +1,5 @@
 import path from 'path'
-import fs from 'fs'
+import fs from 'fs/promises'
 import {
   readMarkdownFile,
   markdownToHtml,
@@ -7,23 +7,28 @@ import {
   mdRemover,
 } from './postUtils'
 
-import { ITechPosts, ITechPost, ITechData } from '@/types/post'
+import { ITechPosts, ITechPost, ITechPostMatterData } from '@/types/post'
 
+export const getTechSlugs = async () => {
+  const techs = await getAllTechs()
+  return techs.map((tech) => tech.postSlug)
+}
 const techDirectory = path.join(process.cwd(), 'posts', 'tech')
-const techFiles = fs.readdirSync(techDirectory)
 
 export const getAllTechs = async (): Promise<ITechPosts> => {
+  const techFiles = await fs.readdir(techDirectory)
+
   const posts = await Promise.all(
-    techFiles.map(async (techFile) => {
-      const slug = mdRemover(techFile)
-      const file = path.join(techDirectory, techFile)
-      const { data, content } = readMarkdownFile(file)
-      const convertedContent = await markdownToHtmlOnlyP(content)
+    techFiles.map(async (file) => {
+      const slug = mdRemover(file)
+      const techPath = path.join(techDirectory, file)
+      const { data, content } = await readMarkdownFile(techPath)
+      const htmlContent = await markdownToHtmlOnlyP(content)
 
       return {
         postSlug: slug,
-        content: convertedContent,
-        ...(data as ITechData),
+        content: htmlContent,
+        ...(data as ITechPostMatterData),
       }
     }),
   )
@@ -32,22 +37,27 @@ export const getAllTechs = async (): Promise<ITechPosts> => {
 }
 
 export const getTechBySlug = async (slug: string): Promise<ITechPost> => {
-  const file = path.join(techDirectory, `${slug}.md`)
-  const { data, content } = readMarkdownFile(file)
-  const convertedContent = await markdownToHtml(content)
+  const techPath = path.join(techDirectory, `${slug}.md`)
+  const { data, content } = await readMarkdownFile(techPath)
+  const htmlContent = await markdownToHtml(content)
 
   return {
     postSlug: slug,
-    content: convertedContent,
-    ...(data as ITechData),
+    content: htmlContent,
+    ...(data as ITechPostMatterData),
   }
+}
+
+export const getAllTagSlugs = async () => {
+  const posts = await getAllTechs()
+  const tags = posts.flatMap((post) => post.tags)
+  return tags
 }
 
 export const getAllTags = async (): Promise<{ [tag: string]: number }> => {
   const posts = await getAllTechs()
   const tags = posts.flatMap((post) => post.tags)
-
-  const tagCounts = tags.reduce<{ [key: string]: number }>((counts, tag) => {
+  const tagCounts = tags.reduce<{ [tag: string]: number }>((counts, tag) => {
     counts[tag] = (counts[tag] || 0) + 1
     return counts
   }, {})

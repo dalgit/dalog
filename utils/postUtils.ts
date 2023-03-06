@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs/promises'
 import matter from 'gray-matter'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
@@ -6,8 +6,8 @@ import remarkRehype from 'remark-rehype'
 import rehypeSanitize from 'rehype-sanitize'
 import rehypeStringify from 'rehype-stringify'
 
-export const readMarkdownFile = (file: string) => {
-  const postContent = fs.readFileSync(file, 'utf-8')
+export const readMarkdownFile = async (file: string) => {
+  const postContent = await fs.readFile(file, 'utf-8')
   return matter(postContent)
 }
 
@@ -32,4 +32,5 @@ export const markdownToHtmlOnlyP = async (markdownValue: string) => {
   return processedHTML.toString()
 }
 
-export const mdRemover = (fileName: string) => fileName.replace(/\.md$/, '')
+export const mdRemover = (fileName: string): string =>
+  fileName.replace(/\.md$/, '')

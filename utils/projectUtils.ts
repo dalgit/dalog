@@ -1,7 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import { readMarkdownFile, markdownToHtml, mdRemover } from './postUtils'
-import { IProjectPosts, IProjectPost, IProjectData } from '@/types/post'
+import { IProjectPosts, IProjectPost, IProjectMatterData } from '@/types/post'
 
 const projectsDirectory = path.join(process.cwd(), 'posts', 'projects')
 const projectsFiles = fs.readdirSync(projectsDirectory)
@@ -20,6 +20,6 @@ export const getProjectBySlug = async (slug: string): Promise<IProjectPost> => {
   return {
     postSlug: slug,
     content: htmlContent,
-    ...(data as IProjectData),
+    ...(data as IProjectMatterData),
   }
 }
