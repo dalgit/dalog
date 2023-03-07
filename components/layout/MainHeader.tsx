@@ -6,15 +6,30 @@ import hamburger from '/public/assets/hamburger.png'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { MAIN_MENUS as menus } from '@/constants/headerMenus'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 const MainHeader = () => {
   const router = useRouter()
   const path = router.pathname
+  const listRef = useRef<HTMLDivElement>(null)
   const [isMenuListOpen, setIsMenuListOpen] = useState<boolean>(false)
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (listRef.current && !listRef.current.contains(e.target as Node)) {
+        setIsMenuListOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleOutsideClick)
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick)
+    }
+  }, [listRef, setIsMenuListOpen])
 
   return (
     <MainHeaderLayout isMenuListOpen={isMenuListOpen}>
-      <MainHeaderInner>
+      <MainHeaderInner ref={listRef}>
         <Link href="/">
           <Image alt="logo" src={logo} height={30} />
         </Link>
