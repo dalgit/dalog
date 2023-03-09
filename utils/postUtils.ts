@@ -27,6 +27,11 @@ export const markdownToHtmlOnlyP = async (markdownValue: string) => {
     .use(remarkRehype)
     .use(rehypeSanitize, { tagNames: ['p'] })
     .use(rehypeStringify)
+    .use(() => (tree) => {
+      tree.children = tree.children.filter(
+        (node) => node.type === 'element' && node.tagName === 'p',
+      )
+    })
     .process(markdownValue)
 
   return processedHTML.toString()
