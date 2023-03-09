@@ -1,22 +1,29 @@
-const layoutHeight = {
-  header: '63px',
-  footer: '90px',
+import { DefaultTheme } from 'styled-components'
+
+const pageBaseSize = {
+  contentWidth: '110px',
+  contentPadding: '0 10px',
+  headerHeight: '63px',
+  footerHeight: '90px',
+  sideBarWIdth: '150px',
 }
 
 const deviceSizes = {
   mobile: '767px',
-  tablet: { min: '768px', max: '1023px' },
+  tablet: '1023px',
+  tabletMax: '1023px',
   laptop: '1024px',
 }
 
 const device = {
   mobile: `screen and (max-width: ${deviceSizes.mobile})`,
-  tablet: `screen and (min-width:${deviceSizes.tablet.min}) and (max-width: ${deviceSizes.tablet.max})`,
+  tablet: `screen and (min-width:${deviceSizes.mobile}) and (max-width: ${deviceSizes.tablet})`,
+  tabletMax: `screen and (max-width: ${deviceSizes.laptop})`,
   laptop: `screen and (min-width: ${deviceSizes.laptop})`,
 }
 
-const theme = {
-  layoutHeight,
+const theme: DefaultTheme = {
+  pageBaseSize,
   device,
 }
 

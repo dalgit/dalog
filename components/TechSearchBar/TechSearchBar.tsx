@@ -39,6 +39,14 @@ const Form = styled.form`
   display: flex;
   align-items: center;
   margin-bottom: 40px;
+  justify-content: center;
+
+  @media ${({ theme }) => theme.device.tabletMax} {
+    border: 1px solid #b5b5b5;
+    border-radius: 20px;
+    height: 40px;
+    padding: 0 20px;
+  }
 `
 
 const Button = styled.button`

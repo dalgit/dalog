@@ -69,5 +69,5 @@ const ResultText = styled.span`
 
 const SideBar = styled.div`
   font-size: 14px;
-  width: 330px;
+  width: 150px;
 `

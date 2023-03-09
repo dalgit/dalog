@@ -13,9 +13,11 @@ const TechPostCard = ({ post }: PostCardProps) => {
 
   return (
     <TechPostCardLayout>
-      <Link href={`/tech/${postSlug}`}>
-        <Image src={thumbnailPath} width={180} height={150} alt="tmp" />
-      </Link>
+      <ImageWrapper>
+        <Link href={`/tech/${postSlug}`}>
+          <Image src={thumbnailPath} fill alt="thumbnail" />
+        </Link>
+      </ImageWrapper>
       <ContentBox>
         <Tags>
           {tags?.map((tag) => (
@@ -38,15 +40,51 @@ export default TechPostCard
 
 const TechPostCardLayout = styled.article`
   display: flex;
-  height: 150px;
+  height: 170px;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 650px;
+    width: 100%;
+
+    height: auto;
+  }
+`
+
+const ImageWrapper = styled.div`
+  height: 100%;
+  position: relative;
+  width: 250px;
+  margin-right: 20px;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    margin-right: 0;
+    width: 100%;
+    border-radius: 5%;
+    aspect-ratio: 1/0.6;
+    margin-bottom: 30px;
+    overflow: hidden;
+  }
 `
 
 const ContentBox = styled.div`
-  padding: 10px 10px 10px 30px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   justify-content: space-between;
+  overflow: hidden;
+
+  @media ${({ theme }) => theme.device.laptop} {
+    padding: 10px;
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    & > * {
+      margin-bottom: 7px;
+    }
+  }
 `
 
 const Tags = styled.div`
@@ -57,14 +95,13 @@ const Tags = styled.div`
 
   a {
     margin-right: 10px;
-    line-height: normal;
     color: #726ed7;
-    font-size: 13px;
+    font-size: 15px;
   }
 `
 
 const Title = styled.p`
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bolder;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -79,8 +116,8 @@ const ContentPreview = styled.div`
   -webkit-box-orient: vertical;
 
   font-size: 16px;
-  height: 32px;
-
+  line-height: 1.2;
+  height: calc(16px * 2 * 1.2);
   p {
     display: inline;
     white-space: normal;
@@ -88,6 +125,6 @@ const ContentPreview = styled.div`
 `
 
 const Date = styled.p`
-  font-size: 12px;
+  font-size: 14px;
   color: gray;
 `

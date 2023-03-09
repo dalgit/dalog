@@ -4,26 +4,35 @@ import { ReactNode } from 'react'
 import Footer from './Footer'
 import styled from 'styled-components'
 import SubHeader from './SubHeader'
+
 type LayoutProps = { children: ReactNode }
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <>
-      <BaseLayout>
+    <BaseLayout>
+      <ContentWrapper>
         <MainHeader />
         <SubHeader />
         {children}
-      </BaseLayout>
+      </ContentWrapper>
       <Footer />
-    </>
+    </BaseLayout>
   )
 }
 
 export default Layout
 
-const BaseLayout = styled.div`
-  padding: 0 300px;
-  margin-top: ${({ theme }) => theme.layoutHeight.header};
+const ContentWrapper = styled.div`
+  padding: 0 10px;
+  margin-top: ${({ theme }) => theme.pageBaseSize.headerHeight};
   min-height: ${({ theme }) =>
-    `calc(100vh - ${theme.layoutHeight.header} - ${theme.layoutHeight.footer})`};
+    `calc(100vh - ${theme.pageBaseSize.headerHeight} - ${theme.pageBaseSize.footerHeight})`};
+
+  width: 1100px;
+  max-width: 100%;
+`
+const BaseLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `

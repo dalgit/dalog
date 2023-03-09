@@ -36,4 +36,8 @@ const List = styled.ul`
     margin-right: 40px;
     margin-bottom: 70px;
   }
+
+  @media ${({ theme }) => theme.device.tabletMax} {
+    justify-content: center;
+  }
 `

@@ -22,7 +22,7 @@ const FooterLayout = styled.footer`
   align-items: center;
   background-color: black;
   width: 100%;
-  height: ${({ theme }) => theme.layoutHeight.footer};
+  height: ${({ theme }) => theme.pageBaseSize.footerHeight};
   box-sizing: border-box;
 
   span {

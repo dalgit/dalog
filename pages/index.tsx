@@ -12,13 +12,13 @@ interface TechPostListPageProps {
 
 const TechPostListPage = ({ posts, tags }: TechPostListPageProps) => {
   return (
-      <HomeLayout>
-        <TechPostCardList posts={posts} />
-        <SideBar>
-          <TechSearchBar />
-          <TechTagList tags={tags} />
-        </SideBar>
-      </HomeLayout>
+    <HomeLayout>
+      <TechPostCardList posts={posts} />
+      <SideBar>
+        <TechSearchBar />
+        <TechTagList tags={tags} />
+      </SideBar>
+    </HomeLayout>
   )
 }
 
@@ -34,9 +34,27 @@ export async function getStaticProps() {
 
 const HomeLayout = styled.div`
   display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    flex-direction: column-reverse;
+  }
+
+  @media ${({ theme }) => theme.device.tablet} {
+    flex-direction: column-reverse;
+  }
 `
 
 const SideBar = styled.div`
   font-size: 14px;
-  width: 330px;
+  min-width: 150px;
+  max-width: 150px;
+
+  margin-left: 30px;
+
+  @media ${({ theme }) => theme.device.tabletMax} {
+    max-width: 100%;
+    margin-left: 0;
+  }
 `

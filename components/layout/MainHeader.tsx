@@ -55,9 +55,11 @@ export default MainHeader
 const HamburgerButton = styled.button`
   background-color: white;
   border: none;
-  z-index: 10;
-  @media ${({ theme }) => theme.device.laptop} {
-    display: none;
+  z-index: 15;
+  display: none;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    display: block;
   }
 `
 
@@ -65,10 +67,10 @@ const MainHeaderInner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 900px;
+  width: 1100px;
+  padding: 0 10px;
 
-  @media ${({ theme }) => theme.device.mobile} {
-    padding: 0 20px;
+  @media ${({ theme }) => theme.device.tabletMax} {
     position: relative;
   }
 `
@@ -82,16 +84,18 @@ const MainHeaderLayout = styled.nav<{ isMenuListOpen: boolean }>`
   width: 100%;
   border-bottom: 1.5px solid #f5f5f5;
   background-color: white;
-  height: ${({ theme }) => theme.layoutHeight.header};
+  height: ${({ theme }) => theme.pageBaseSize.headerHeight};
+  z-index: 10;
 `
 
 const List = styled.ul<{ isMenuListOpen: boolean }>`
   display: flex;
   align-items: center;
   height: 100%;
-  position: absolute;
 
   @media ${({ theme }) => theme.device.mobile} {
+    position: absolute;
+
     height: 200px;
     width: 100%;
     flex-direction: column;

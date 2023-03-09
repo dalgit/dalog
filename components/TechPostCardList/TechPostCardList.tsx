@@ -20,7 +20,13 @@ export default TechPostCardList
 
 const TechPostCardListLayout = styled.section`
   min-width: 0;
-  article {
+  & > * {
     margin-bottom: 65px;
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `
