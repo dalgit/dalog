@@ -61,3 +61,7 @@ export type Topics = Topic[]
 
 export type INoteCategories = INoteCategory[]
 
+export interface IPostGroupByYear {
+  year: number
+  posts: IProjectPosts
+}
