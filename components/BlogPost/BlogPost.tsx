@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getIsProject, getIsTech } from '@/utils/getPostType'
 import { IProjectPost, ITechPost } from '@/types/post'
+import PostContent from '../PostContent/PostContent'
 
 type BlogPostProps = {
   post: IProjectPost | ITechPost
@@ -41,7 +42,7 @@ const BlogPost = ({ post }: BlogPostProps) => {
       <ImageWrap>
         <Image src={thumbnailPath} alt="thumbnail" width={600} height={400} />
       </ImageWrap>
-      <ContentBox dangerouslySetInnerHTML={{ __html: content }}></ContentBox>
+      <PostContent content={content} />
     </article>
   )
 }
@@ -52,14 +53,6 @@ const ImageWrap = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: center;
-`
-const ContentBox = styled.div`
-  white-space: pre-Wrap;
-  margin: 40px 0px;
-
-  * {
-    all: revert;
-  }
 `
 
 const HeadSubBox = styled.div`

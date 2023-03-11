@@ -6,6 +6,7 @@ import { ITechPost } from '@/types/post'
 import { getTechSlugs } from '@/utils/techUtils'
 import { NextSeo } from 'next-seo'
 import { HOME_URL } from '@/data/meta'
+import PostContent from '@/components/PostContent/PostContent'
 type PostPageProps = {
   post: ITechPost
 }
@@ -28,6 +29,7 @@ const TechPostDetailPage = ({ post }: PostPageProps) => {
           images: [{ url: `/posts/${post.postSlug}/${post.thumbnail}` }],
         }}
       />
+      <PostContent content={post.content} />
       <BlogPost post={post} />
     </>
   )

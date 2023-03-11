@@ -10,6 +10,8 @@ import { INote, INoteCategories } from '@/types/post'
 import NoteSideBar from '@/components/NoteSideBar/NoteSideBar'
 import { HOME_URL } from '@/data/meta'
 import { NextSeo } from 'next-seo'
+import PostContent from '@/components/PostContent/PostContent'
+
 interface IParams extends ParsedUrlQuery {
   slug: [string, string]
 }
@@ -35,8 +37,8 @@ const NotePage = ({ categories, note }: NotePageProps) => {
       <NotePageLayout>
         <NoteSideBar categories={categories} />
         <ContentBox>
-          <h1>{note.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: note.content }}></div>
+          <Title>{note.title}</Title>
+          <PostContent content={note.content} />
         </ContentBox>
       </NotePageLayout>
     </>
@@ -45,20 +47,23 @@ const NotePage = ({ categories, note }: NotePageProps) => {
 
 export default NotePage
 
+const Title = styled.h1`
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 130%;
+`
+
 const ContentBox = styled.div`
   padding-left: 20px;
-
-  h1 {
-    font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    line-height: 130%;
-  }
 `
 
 const NotePageLayout = styled.div`
   display: flex;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
+  border: 1px solid red;
+  min-height: 100%;
+  height: 100%;
 `
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
