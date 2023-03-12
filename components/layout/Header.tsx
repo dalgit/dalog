@@ -29,6 +29,10 @@ const Header = () => {
     }
   }, [listRef, setIsMenuListOpen])
 
+  const toggleMenuList = () => {
+    setIsMenuListOpen(!isMenuListOpen)
+  }
+
   return (
     <HeaderLayout isMenuListOpen={isMenuListOpen}>
       <HeaderInner ref={listRef}>
@@ -41,12 +45,14 @@ const Header = () => {
 
             return (
               <Item isCurrentUrl={isCurrentUrl} key={menu.id}>
-                <Link href={menu.path}>{menu.name}</Link>
+                <Link href={menu.path} onClick={toggleMenuList}>
+                  {menu.name}
+                </Link>
               </Item>
             )
           })}
         </List>
-        <HamburgerButton onClick={() => setIsMenuListOpen(!isMenuListOpen)}>
+        <HamburgerButton onClick={toggleMenuList}>
           <Image alt="logo" src={hamburger} height={30} />
         </HamburgerButton>
       </HeaderInner>
