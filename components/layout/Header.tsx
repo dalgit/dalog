@@ -7,11 +7,13 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { MAIN_MENUS as menus } from '@/constants/headerMenus'
 import { useState, useEffect, useRef } from 'react'
-const MainHeader = () => {
-  const router = useRouter()
-  const path = router.pathname
+import { getPageType } from '@/utils/getCurrentPage'
+
+const Header = () => {
+  const { pathname } = useRouter()
   const listRef = useRef<HTMLDivElement>(null)
   const [isMenuListOpen, setIsMenuListOpen] = useState<boolean>(false)
+  const pageType = getPageType(pathname)
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
@@ -28,15 +30,17 @@ const MainHeader = () => {
   }, [listRef, setIsMenuListOpen])
 
   return (
-    <MainHeaderLayout isMenuListOpen={isMenuListOpen}>
-      <MainHeaderInner ref={listRef}>
+    <HeaderLayout isMenuListOpen={isMenuListOpen}>
+      <HeaderInner ref={listRef}>
         <Link href="/">
           <Image alt="logo" src={logo} height={30} />
         </Link>
         <List isMenuListOpen={isMenuListOpen}>
           {menus.map((menu) => {
+            const isCurrentUrl = menu.type === pageType
+
             return (
-              <Item isCurrentUrl={path === menu.path} key={menu.id}>
+              <Item isCurrentUrl={isCurrentUrl} key={menu.id}>
                 <Link href={menu.path}>{menu.name}</Link>
               </Item>
             )
@@ -45,12 +49,12 @@ const MainHeader = () => {
         <HamburgerButton onClick={() => setIsMenuListOpen(!isMenuListOpen)}>
           <Image alt="logo" src={hamburger} height={30} />
         </HamburgerButton>
-      </MainHeaderInner>
-    </MainHeaderLayout>
+      </HeaderInner>
+    </HeaderLayout>
   )
 }
 
-export default MainHeader
+export default Header
 
 const HamburgerButton = styled.button`
   background-color: white;
@@ -63,7 +67,7 @@ const HamburgerButton = styled.button`
   }
 `
 
-const MainHeaderInner = styled.div`
+const HeaderInner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -75,7 +79,7 @@ const MainHeaderInner = styled.div`
   }
 `
 
-const MainHeaderLayout = styled.nav<{ isMenuListOpen: boolean }>`
+const HeaderLayout = styled.nav<{ isMenuListOpen: boolean }>`
   position: fixed;
   display: flex;
   justify-content: center;

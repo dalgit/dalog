@@ -7,8 +7,8 @@ import styled from 'styled-components'
 import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
 import { ITechPosts } from '@/types/post'
 import { getAllTagSlugs } from '@/utils/techUtils'
-import TechSearchBar from '@/components/TechSearchBar/TechSearchBar'
-import TechTagsList from '@/components/TechTagList/TechTagList'
+import TechSideBar from '@/components/TechSideBar/TechSideBar'
+import SearchResult from '@/components/SearchResult/SearchResult'
 interface IParams extends ParsedUrlQuery {
   slug: string
 }
@@ -16,16 +16,19 @@ interface IParams extends ParsedUrlQuery {
 interface TagListPageProps {
   posts: ITechPosts
   tags: { [tag: string]: number }
+  slug: string
 }
 
-const TagListPage = ({ posts, tags }: TagListPageProps) => {
+const TagListPage = ({ posts, tags, slug }: TagListPageProps) => {
+  const postCount = posts.length
+
   return (
     <HomeLayout>
-      <TechPostCardList posts={posts} />
-      <SideBar>
-        <TechSearchBar />
-        <TechTagsList tags={tags} />
-      </SideBar>
+      <div>
+        <SearchResult keyword={slug} postCount={postCount} />
+        <TechPostCardList posts={posts} />
+      </div>
+      <TechSideBar tags={tags} />
     </HomeLayout>
   )
 }
@@ -38,7 +41,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const tags = await getAllTags()
 
   return {
-    props: { posts, tags },
+    props: { posts, tags, slug },
   }
 }
 
@@ -57,9 +60,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const HomeLayout = styled.div`
   display: flex;
-`
+  justify-content: space-between;
 
-const SideBar = styled.div`
-  font-size: 14px;
-  width: 150px;
+  @media ${({ theme }) => theme.device.tabletMax} {
+    flex-direction: column-reverse;
+  }
 `
