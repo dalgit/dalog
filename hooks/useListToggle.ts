@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 
-const useListToggle = () => {
-  const listRef = useRef<HTMLUListElement | HTMLDivElement>(null)
+const useListToggle = <T extends HTMLElement>() => {
+  const listRef = useRef<T>(null)
   const [isListOpen, setIsListOpen] = useState<boolean>(false)
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const useListToggle = () => {
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick)
     }
-  }, [listRef, setIsListOpen])
+  }, [listRef])
 
   const toggleList = () => {
     setIsListOpen(!isListOpen)

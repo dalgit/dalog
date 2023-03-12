@@ -11,7 +11,7 @@ interface NoteSideBarProps {
 }
 
 const NoteSideBar = ({ categories }: NoteSideBarProps) => {
-  const { isListOpen, listRef, toggleList } = useListToggle()
+  const { isListOpen, listRef, toggleList } = useListToggle<HTMLUListElement>()
 
   return (
     <DDDD>

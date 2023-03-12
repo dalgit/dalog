@@ -12,7 +12,7 @@ import useListToggle from '@/hooks/useListToggle'
 const Header = () => {
   const { pathname } = useRouter()
   const pageType = getPageType(pathname)
-  const { isListOpen, listRef, toggleList } = useListToggle()
+  const { isListOpen, listRef, toggleList } = useListToggle<HTMLDivElement>()
 
   return (
     <HeaderLayout isListOpen={isListOpen}>
