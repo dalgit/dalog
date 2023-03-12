@@ -21,7 +21,7 @@ const TechPostCard = ({ post }: PostCardProps) => {
       <ContentBox>
         <Tags>
           {tags?.map((tag) => (
-            <Link href={`/tag/${tag}`} key={tag}>
+            <Link href={`/tech/tag/${tag}`} key={tag}>
               #{tag}
             </Link>
           ))}

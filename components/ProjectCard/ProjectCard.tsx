@@ -16,15 +16,16 @@ const ProjectCard = ({ post }: ProjectCardProps) => {
   return (
     <ProjCardLayout>
       <Link href={postUrl}>
-        <Image
-          src={thumbnailPath}
-          alt="thumbnail"
-          width={280}
-          height={170}
-          style={{
-            borderRadius: '12px 12px 0 0',
-          }}
-        />
+        <ImageWrapper>
+          <Image
+            src={thumbnailPath}
+            alt="thumbnail"
+            fill
+            style={{
+              borderRadius: '12px 12px 0 0',
+            }}
+          />
+        </ImageWrapper>
         <ContentBox>
           <BoxHeader>
             <span>{type}</span>
@@ -39,7 +40,10 @@ const ProjectCard = ({ post }: ProjectCardProps) => {
 }
 
 export default ProjectCard
-
+const ImageWrapper = styled.div`
+  aspect-ratio: 1/0.6;
+  position: relative;
+`
 const ContentBox = styled.div`
   padding: 15px;
   height: 110px;
@@ -63,8 +67,9 @@ const Title = styled.div`
   font-size: 18px;
 `
 const ProjCardLayout = styled.div`
-  width: 280px;
-  height: 280px;
+  max-width: 280px;
+  width: 100%;
+  aspect-ratio: 1/1;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 12px;
 `

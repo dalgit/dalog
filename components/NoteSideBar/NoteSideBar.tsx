@@ -28,7 +28,7 @@ const NoteSideBar = ({ categories }: NoteSideBarProps) => {
   }, [listRef, setIsMenuListOpen])
 
   return (
-    <>
+    <DDDD>
       <SideBarOpenButton
         onClick={() => setIsMenuListOpen(!isMenuListOpen)}
         isMenuListOpen={isMenuListOpen}
@@ -40,21 +40,25 @@ const NoteSideBar = ({ categories }: NoteSideBarProps) => {
           <NoteCategory key={category.name} category={category} />
         ))}
       </NoteSideBarLayout>
-    </>
+    </DDDD>
   )
 }
 
 export default NoteSideBar
 
+const DDDD = styled.div``
+
 const NoteSideBarLayout = styled.ul<{ isMenuListOpen: boolean }>`
   border-right: 2px solid #eaeaea;
-
   max-width: 200px;
-  min-height: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  position: sticky;
+  position: -webkit-sticky;
+  height: 700px;
+  top: ${({ theme }) => theme.pageBaseSize.headerHeight};
+  padding-top: 60px;
 
   @media ${({ theme }) => theme.device.mobile} {
     padding-left: 25px;

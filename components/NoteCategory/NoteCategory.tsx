@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { capitalizer } from '@/utils/common'
+import { capitalizer } from '@/utils/common/capitalizer'
 import arrow from '/public/assets/arrow.svg'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -24,7 +24,7 @@ const NoteCategory = ({ category }: NoteCategoryProps) => {
   }, [])
 
   return (
-    <div>
+    <>
       <CategoryNameBox onClick={() => setIsCategoryOpen(!isCategoryOpen)}>
         <ImageWrapper isCategoryOpen={isCategoryOpen}>
           <Image src={arrow} width={10} height={10} alt={'arrow'} />
@@ -43,7 +43,7 @@ const NoteCategory = ({ category }: NoteCategoryProps) => {
             />
           ))}
       </ul>
-    </div>
+    </>
   )
 }
 
@@ -58,9 +58,12 @@ const CategoryNameBox = styled.div`
   align-items: center;
   cursor: pointer;
   width: fit-content;
+  max-width: 200px;
 `
 const CategoryName = styled.span`
   font-size: 20px;
   font-weight: bolder;
   margin-left: 15px;
+  overflow: hidden;
+  word-wrap: break-word;
 `

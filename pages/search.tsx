@@ -5,9 +5,9 @@ import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
 import { getSearchedPosts } from '@/utils/techUtils'
 import { ParsedUrlQuery } from 'querystring'
 import { getAllTags } from '@/utils/techUtils'
-import TechSearchBar from '@/components/TechSearchBar/TechSearchBar'
-import TechTagList from '@/components/TechTagList/TechTagList'
 import { ITechPosts } from '@/types/post'
+import TechSideBar from '@/components/TechSideBar/TechSideBar'
+import SearchResult from '@/components/SearchResult/SearchResult'
 
 interface IQuery extends ParsedUrlQuery {
   keyword: string | undefined
@@ -21,23 +21,14 @@ interface TechPostSearchPage {
 
 const TechPostSearchPage = ({ posts, tags, keyword }: TechPostSearchPage) => {
   const postCount = posts.length
-  const hasPosts = postCount > 0
 
   return (
     <HomeLayout>
       <div>
-        <ResultText>
-          {hasPosts
-            ? `'${keyword}'에 대한 결과 : ${postCount}건`
-            : `'${keyword}'에 대한 결과가 없습니다.`}
-        </ResultText>
-
+        <SearchResult keyword={keyword} postCount={postCount} />
         <TechPostCardList posts={posts} />
       </div>
-      <SideBar>
-        <TechSearchBar />
-        <TechTagList tags={tags} />
-      </SideBar>
+      <TechSideBar tags={tags} />
     </HomeLayout>
   )
 }
@@ -55,19 +46,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
 const HomeLayout = styled.div`
   display: flex;
-`
+  justify-content: space-between;
 
-const ResultText = styled.span`
-  display: inline-block;
-  font-size: 25px;
-  font-weight: bolder;
-  margin-bottom: 30px;
-  background-color: #7e7979;
-  color: white;
-  padding: 5px;
-`
-
-const SideBar = styled.div`
-  font-size: 14px;
-  width: 150px;
+  @media ${({ theme }) => theme.device.tabletMax} {
+    flex-direction: column-reverse;
+  }
 `
