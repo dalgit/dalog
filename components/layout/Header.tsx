@@ -6,53 +6,33 @@ import hamburger from '/public/assets/hamburger.png'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { MAIN_MENUS as menus } from '@/constants/headerMenus'
-import { useState, useEffect, useRef } from 'react'
 import { getPageType } from '@/utils/common/getPageType'
+import useListToggle from '@/hooks/useListToggle'
 
 const Header = () => {
   const { pathname } = useRouter()
-  const listRef = useRef<HTMLDivElement>(null)
-  const [isMenuListOpen, setIsMenuListOpen] = useState<boolean>(false)
   const pageType = getPageType(pathname)
-
-  useEffect(() => {
-    const handleOutsideClick = (e: MouseEvent) => {
-      if (listRef.current && !listRef.current.contains(e.target as Node)) {
-        setIsMenuListOpen(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleOutsideClick)
-
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick)
-    }
-  }, [listRef, setIsMenuListOpen])
-
-  const toggleMenuList = () => {
-    setIsMenuListOpen(!isMenuListOpen)
-  }
+  const { isListOpen, listRef, toggleList } = useListToggle()
 
   return (
-    <HeaderLayout isMenuListOpen={isMenuListOpen}>
+    <HeaderLayout isListOpen={isListOpen}>
       <HeaderInner ref={listRef}>
         <Link href="/">
           <Image alt="logo" src={logo} height={30} />
         </Link>
-        <List isMenuListOpen={isMenuListOpen}>
+        <List isListOpen={isListOpen}>
           {menus.map((menu) => {
             const isCurrentUrl = menu.type === pageType
-
             return (
               <Item isCurrentUrl={isCurrentUrl} key={menu.id}>
-                <Link href={menu.path} onClick={toggleMenuList}>
+                <Link href={menu.path} onClick={toggleList}>
                   {menu.name}
                 </Link>
               </Item>
             )
           })}
         </List>
-        <HamburgerButton onClick={toggleMenuList}>
+        <HamburgerButton onClick={toggleList}>
           <Image alt="logo" src={hamburger} height={30} />
         </HamburgerButton>
       </HeaderInner>
@@ -85,7 +65,7 @@ const HeaderInner = styled.div`
   }
 `
 
-const HeaderLayout = styled.nav<{ isMenuListOpen: boolean }>`
+const HeaderLayout = styled.nav<{ isListOpen: boolean }>`
   position: fixed;
   display: flex;
   justify-content: center;
@@ -98,7 +78,7 @@ const HeaderLayout = styled.nav<{ isMenuListOpen: boolean }>`
   z-index: 10;
 `
 
-const List = styled.ul<{ isMenuListOpen: boolean }>`
+const List = styled.ul<{ isListOpen: boolean }>`
   display: flex;
   align-items: center;
   height: 100%;
@@ -111,7 +91,7 @@ const List = styled.ul<{ isMenuListOpen: boolean }>`
     flex-direction: column;
     left: 0;
     transition: top 0.3s ease-in-out;
-    top: ${({ isMenuListOpen }) => (isMenuListOpen ? '0' : `-200px`)};
+    top: ${({ isListOpen }) => (isListOpen ? '0' : `-200px`)};
     background-color: rgba(128, 128, 128, 0.8);
   }
 `

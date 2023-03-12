@@ -4,38 +4,21 @@ import styled from 'styled-components'
 import { INoteCategories } from '@/types/post'
 import arrow from '/public/assets/right-arrow.png'
 import Image from 'next/image'
-import { useState, useEffect, useRef } from 'react'
+import useListToggle from '@/hooks/useListToggle'
+
 interface NoteSideBarProps {
   categories: INoteCategories
 }
 
 const NoteSideBar = ({ categories }: NoteSideBarProps) => {
-  const [isMenuListOpen, setIsMenuListOpen] = useState<boolean>(false)
-  const listRef = useRef<HTMLUListElement>(null)
-
-  useEffect(() => {
-    const handleOutsideClick = (e: MouseEvent) => {
-      if (listRef.current && !listRef.current.contains(e.target as Node)) {
-        setIsMenuListOpen(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleOutsideClick)
-
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick)
-    }
-  }, [listRef, setIsMenuListOpen])
+  const { isListOpen, listRef, toggleList } = useListToggle()
 
   return (
     <DDDD>
-      <SideBarOpenButton
-        onClick={() => setIsMenuListOpen(!isMenuListOpen)}
-        isMenuListOpen={isMenuListOpen}
-      >
+      <SideBarOpenButton onClick={toggleList}>
         <Image src={arrow} alt="arrow" width={30} />
       </SideBarOpenButton>
-      <NoteSideBarLayout isMenuListOpen={isMenuListOpen} ref={listRef}>
+      <NoteSideBarLayout isListOpen={isListOpen} ref={listRef}>
         {categories.map((category) => (
           <NoteCategory key={category.name} category={category} />
         ))}
@@ -48,7 +31,7 @@ export default NoteSideBar
 
 const DDDD = styled.div``
 
-const NoteSideBarLayout = styled.ul<{ isMenuListOpen: boolean }>`
+const NoteSideBarLayout = styled.ul<{ isListOpen: boolean }>`
   border-right: 2px solid #eaeaea;
   max-width: 200px;
   display: flex;
@@ -68,7 +51,7 @@ const NoteSideBarLayout = styled.ul<{ isMenuListOpen: boolean }>`
     z-index: 15;
     height: 100%;
     left: 0;
-    left: ${({ isMenuListOpen }) => (isMenuListOpen ? '0' : `-200px`)};
+    left: ${({ isListOpen }) => (isListOpen ? '0' : `-200px`)};
     background-color: white;
 
     display: flex;
@@ -80,7 +63,7 @@ const NoteSideBarLayout = styled.ul<{ isMenuListOpen: boolean }>`
   }
 `
 
-const SideBarOpenButton = styled.button<{ isMenuListOpen: boolean }>`
+const SideBarOpenButton = styled.button`
   background-color: white;
   border: none;
   display: none;

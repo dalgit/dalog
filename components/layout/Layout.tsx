@@ -29,7 +29,7 @@ const BaseLayout = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  padding: 0 10px 50px 0;
+  padding: 0 10px 50px 10px;
   margin-top: ${({ theme }) => theme.pageBaseSize.headerHeight};
   min-height: ${({ theme }) =>
     `calc(100vh - ${theme.pageBaseSize.headerHeight} - ${theme.pageBaseSize.footerHeight})`};
