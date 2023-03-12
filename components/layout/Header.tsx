@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { MAIN_MENUS as menus } from '@/constants/headerMenus'
 import { useState, useEffect, useRef } from 'react'
-import { getPageType } from '@/utils/getCurrentPage'
+import { getPageType } from '@/utils/common/getPageType'
 
 const Header = () => {
   const { pathname } = useRouter()

@@ -1,10 +1,12 @@
+import { PageType, BlogType } from './pageTypes'
+
 export const MAIN_MENUS = [
-  { id: 1, name: 'Blog', path: '/' },
-  { id: 2, name: 'Info', path: '/info' },
+  { id: 1, name: 'Blog', path: '/', type: PageType.BLOG },
+  { id: 2, name: 'Info', path: '/info', type: PageType.INFO },
 ]
 
-export const SUB_MENUS = [
-  { id: 1, name: 'Tech', path: '/' },
-  { id: 2, name: 'Proj', path: '/projects' },
-  { id: 3, name: 'Note', path: '/note/react/1' },
+export const BLOG_NAVIGATION_MENUS = [
+  { id: 1, name: 'Tech', path: '/', type: BlogType.TECH },
+  { id: 2, name: 'Proj', path: '/projects', type: BlogType.PROJECTS },
+  { id: 3, name: 'Note', path: '/note/react/1', type: BlogType.NOTE },
 ]

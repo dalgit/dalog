@@ -3,14 +3,15 @@ import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { BLOG_NAVIGATION_MENUS as menus } from '@/constants/headerMenus'
 import Link from 'next/link'
-import { getBlogType } from '@/utils/getCurrentPage'
-import { BlogType } from '@/utils/getCurrentPage'
+import { getBlogType } from '@/utils/common/getBlogType'
+import { BlogType } from '@/constants/pageTypes'
+
 const BlogNavigation = () => {
   const { pathname } = useRouter()
   const blogType = getBlogType(pathname)
   const isNotBlogPage = blogType === BlogType.NONE
 
-  if (isNotBlogPage) return
+  if (isNotBlogPage) return null
 
   return (
     <NavigationList>
