@@ -17,6 +17,7 @@ const TechPostCardList = ({ posts }: TechPostCardListPros) => {
 }
 
 export default TechPostCardList
+
 const TechPostCardListLayout = styled.section`
   min-width: 0;
   & > * {

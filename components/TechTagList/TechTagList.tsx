@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
+import { ITags } from '@/types/tech'
 
 interface SideBarProps {
-  tags: { [tag: string]: number }
+  tags: ITags
 }
 
 const TechTagList = ({ tags }: SideBarProps) => {

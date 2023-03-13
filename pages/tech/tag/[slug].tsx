@@ -1,21 +1,16 @@
-import React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { getAllTags } from '@/utils/techUtils'
-import { getPostsByTag } from '@/utils/techUtils'
-import { ParsedUrlQuery } from 'querystring'
+import React from 'react'
 import styled from 'styled-components'
-import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
-import { ITechPosts } from '@/types/tech'
-import { getAllTagSlugs } from '@/utils/techUtils'
-import TechSideBar from '@/components/TechSideBar/TechSideBar'
 import SearchResult from '@/components/SearchResult/SearchResult'
-interface IParams extends ParsedUrlQuery {
-  slug: string
-}
+import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
+import TechSideBar from '@/components/TechSideBar/TechSideBar'
+import { IParams } from '@/types/query'
+import { ITechPosts, ITags } from '@/types/tech'
+import { getPostsByTag, getAllTags, getAllTagSlugs } from '@/utils/techUtils'
 
 interface TagListPageProps {
   posts: ITechPosts
-  tags: { [tag: string]: number }
+  tags: ITags
   slug: string
 }
 
@@ -36,7 +31,7 @@ const TagListPage = ({ posts, tags, slug }: TagListPageProps) => {
 export default TagListPage
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as IParams
+  const { slug } = params as IParams<string>
   const posts = await getPostsByTag(slug)
   const tags = await getAllTags()
 

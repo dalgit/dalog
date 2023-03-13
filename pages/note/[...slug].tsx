@@ -1,20 +1,16 @@
-import { ParsedUrlQuery } from 'querystring'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import styled from 'styled-components'
 import NoteSideBar from '@/components/NoteSideBar/NoteSideBar'
 import PostContent from '@/components/PostContent/PostContent'
 import { HOME_URL } from '@/data/meta'
-import { INote, INoteCategories } from '@/types/note'
+import { INote, INoteCategories, INoteSlug } from '@/types/note'
+import { IParams } from '@/types/query'
 import {
   getNoteSlugs,
   getNoteCategories,
   getNoteBySlug,
 } from '@/utils/noteUtils'
-
-interface IParams extends ParsedUrlQuery {
-  slug: [string, string]
-}
 
 interface NotePageProps {
   categories: INoteCategories
@@ -66,7 +62,7 @@ const NotePageLayout = styled.div`
 `
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as IParams
+  const { slug } = params as IParams<INoteSlug>
 
   const categories = getNoteCategories()
   const note = await getNoteBySlug(slug)

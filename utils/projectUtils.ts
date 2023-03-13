@@ -5,7 +5,7 @@ import {
   IProjectPosts,
   IProjectPost,
   IProjectMatterData,
-  IPostGroupByYear,
+  IProjectGroupByYear,
 } from '@/types/project'
 
 const projectsDirectory = path.join(process.cwd(), 'posts', 'projects')
@@ -19,8 +19,8 @@ export const getAllProjects = async (): Promise<IProjectPosts> => {
 
 export const getPostsGroupedByYear = (
   posts: IProjectPosts,
-): IPostGroupByYear[] =>
-  posts.reduce((postsGroup: IPostGroupByYear[], post: IProjectPost) => {
+): IProjectGroupByYear[] =>
+  posts.reduce((postsGroup: IProjectGroupByYear[], post: IProjectPost) => {
     const year = new Date(post.createdDate).getFullYear()
     const yearRef = postsGroup.find((group) => group.year === year)
 

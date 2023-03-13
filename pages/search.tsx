@@ -1,21 +1,16 @@
-import { ParsedUrlQuery } from 'querystring'
 import { GetServerSideProps } from 'next'
 import React from 'react'
 import styled from 'styled-components'
 import SearchResult from '@/components/SearchResult/SearchResult'
 import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
 import TechSideBar from '@/components/TechSideBar/TechSideBar'
-import { ITechPosts } from '@/types/tech'
-import { getSearchedPosts } from '@/utils/techUtils'
-import { getAllTags } from '@/utils/techUtils'
-
-interface IQuery extends ParsedUrlQuery {
-  keyword: string | undefined
-}
+import { IQuery } from '@/types/query'
+import { ITechPosts, ITags } from '@/types/tech'
+import { getSearchedPosts, getAllTags } from '@/utils/techUtils'
 
 interface TechPostSearchPage {
   posts: ITechPosts
-  tags: { [tag: string]: number }
+  tags: ITags
   keyword: string
 }
 

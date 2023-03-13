@@ -4,7 +4,9 @@ import BlogNavigation from './BlogNavigation'
 import Footer from './Footer'
 import Header from './Header'
 
-type LayoutProps = { children: ReactNode }
+interface LayoutProps {
+  children: ReactNode
+}
 
 const Layout = ({ children }: LayoutProps) => {
   return (

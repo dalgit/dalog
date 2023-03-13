@@ -1,14 +1,10 @@
-import { ParsedUrlQuery } from 'querystring'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import BlogPost from '@/components/BlogPost/BlogPost'
 import { HOME_URL } from '@/data/meta'
 import { IProjectPost } from '@/types/project'
-import { getProjectBySlug } from '@/utils/projectUtils'
-import { projectSlugs } from '@/utils/projectUtils'
-interface IParams extends ParsedUrlQuery {
-  slug: string
-}
+import { IParams } from '@/types/query'
+import { getProjectBySlug, projectSlugs } from '@/utils/projectUtils'
 
 interface ProjectListPageProps {
   post: IProjectPost
@@ -36,7 +32,7 @@ const ProjectListPage = ({ post }: ProjectListPageProps) => {
 export default ProjectListPage
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as IParams
+  const { slug } = params as IParams<string>
   const post = await getProjectBySlug(slug)
 
   return {

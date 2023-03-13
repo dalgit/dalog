@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import TechSearchBar from '../TechSearchBar/TechSearchBar'
 import TechTagList from '../TechTagList/TechTagList'
+import { ITags } from '@/types/tech'
 
 interface TechSideBarProps {
-  tags: { [tag: string]: number }
+  tags: ITags
 }
 
 const TechSideBar = ({ tags }: TechSideBarProps) => {

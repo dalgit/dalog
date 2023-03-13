@@ -1,3 +1,5 @@
+import { IPostContentSlug } from './post'
+
 export interface ITechPostMatterData {
   tags: string[]
   title: string
@@ -5,13 +7,10 @@ export interface ITechPostMatterData {
   thumbnail: string
 }
 
-export interface ITechPost {
-  tags: string[]
-  title: string
-  content: string
-  createdDate: string
-  postSlug: string
-  thumbnail: string
-}
+export type ITechPost = ITechPostMatterData & IPostContentSlug<string>
 
 export type ITechPosts = ITechPost[]
+
+export interface ITags {
+  [tag: string]: number
+}

@@ -2,6 +2,12 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { Topic } from '@/types/note'
 
+interface NoteCategoryItemProps {
+  topic: Topic
+  categoryName: string
+  currentNote: string
+}
+
 const NoteCategoryItem = ({
   topic,
   categoryName,
@@ -19,12 +25,6 @@ const NoteCategoryItem = ({
 }
 
 export default NoteCategoryItem
-
-interface NoteCategoryItemProps {
-  topic: Topic
-  categoryName: string
-  currentNote: string
-}
 
 const Item = styled.li<{ isCurrentNote: boolean }>`
   margin: 15px 0px 15px 30px;

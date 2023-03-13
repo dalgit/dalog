@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
 import TechSideBar from '@/components/TechSideBar/TechSideBar'
-import { ITechPosts } from '@/types/tech'
+import { ITechPosts, ITags } from '@/types/tech'
 import { getAllTechs, getAllTags } from '@/utils/techUtils'
 
 interface TechPostListPageProps {
   posts: ITechPosts
-  tags: { [tag: string]: number }
+  tags: ITags
 }
 
 const TechPostListPage = ({ posts, tags }: TechPostListPageProps) => {

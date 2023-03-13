@@ -1,18 +1,13 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { getTechBySlug } from '@/utils/techUtils'
-import { ParsedUrlQuery } from 'querystring'
-import BlogPost from '@/components/BlogPost/BlogPost'
-import { ITechPost } from '@/types/tech'
-import { getTechSlugs } from '@/utils/techUtils'
 import { NextSeo } from 'next-seo'
+import BlogPost from '@/components/BlogPost/BlogPost'
 import { HOME_URL } from '@/data/meta'
+import { IParams } from '@/types/query'
+import { ITechPost } from '@/types/tech'
+import { getTechBySlug, getTechSlugs } from '@/utils/techUtils'
 
-type PostPageProps = {
+interface PostPageProps {
   post: ITechPost
-}
-
-interface IParams extends ParsedUrlQuery {
-  slug: string
 }
 
 const TechPostDetailPage = ({ post }: PostPageProps) => {
@@ -37,7 +32,7 @@ const TechPostDetailPage = ({ post }: PostPageProps) => {
 export default TechPostDetailPage
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as IParams
+  const { slug } = params as IParams<string>
   const post = await getTechBySlug(slug)
 
   return {

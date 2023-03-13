@@ -4,6 +4,7 @@ interface SearchResultProps {
   keyword: string
   postCount: number
 }
+
 const SearchResult = ({ keyword, postCount }: SearchResultProps) => {
   const hasPosts = postCount > 0
 

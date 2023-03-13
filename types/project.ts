@@ -1,3 +1,5 @@
+import { IPostContentSlug } from './post'
+
 export interface IProjectMatterData {
   title: string
   createdDate: string
@@ -6,17 +8,9 @@ export interface IProjectMatterData {
   type: string
 }
 
-export interface IProjectPost {
-  title: string
-  content: string
-  createdDate: string
-  postSlug: string
-  thumbnail: string
-  description: string
-  type: string
-}
+export type IProjectPost = IProjectMatterData & IPostContentSlug<string>
 
-export interface IPostGroupByYear {
+export interface IProjectGroupByYear {
   year: number
   posts: IProjectPosts
 }

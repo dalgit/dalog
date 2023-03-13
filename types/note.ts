@@ -1,14 +1,13 @@
+import { IPostContentSlug } from './post'
+
 export interface INoteMatterData {
   title: string
   createdDate: string
 }
 
-export interface INote {
-  postSlug: [string, string]
-  content: string
-  title: string
-  createdDate: string
-}
+export type INoteSlug = [string, string]
+
+export type INote = INoteMatterData & IPostContentSlug<INoteSlug>
 
 export interface INoteCategory {
   name: string
