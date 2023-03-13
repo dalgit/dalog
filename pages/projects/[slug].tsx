@@ -1,11 +1,11 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
-import { getProjectBySlug } from '@/utils/projectUtils'
 import { ParsedUrlQuery } from 'querystring'
-import BlogPost from '@/components/BlogPost/BlogPost'
-import { projectSlugs } from '@/utils/projectUtils'
-import { IProjectPost } from '@/types/post'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
+import BlogPost from '@/components/BlogPost/BlogPost'
 import { HOME_URL } from '@/data/meta'
+import { IProjectPost } from '@/types/post'
+import { getProjectBySlug } from '@/utils/projectUtils'
+import { projectSlugs } from '@/utils/projectUtils'
 interface IParams extends ParsedUrlQuery {
   slug: string
 }

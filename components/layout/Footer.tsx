@@ -1,7 +1,7 @@
-import styled from 'styled-components'
 import icon_github from '/public/assets/icon_github.svg'
 import Image from 'next/image'
 import Link from 'next/link'
+import styled from 'styled-components'
 
 const Footer = () => {
   return (

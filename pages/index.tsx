@@ -1,8 +1,8 @@
-import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
-import { getAllTechs, getAllTags } from '@/utils/techUtils'
 import styled from 'styled-components'
-import { ITechPosts } from '@/types/post'
+import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
 import TechSideBar from '@/components/TechSideBar/TechSideBar'
+import { ITechPosts } from '@/types/post'
+import { getAllTechs, getAllTags } from '@/utils/techUtils'
 
 interface TechPostListPageProps {
   posts: ITechPosts

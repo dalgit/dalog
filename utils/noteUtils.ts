@@ -1,5 +1,5 @@
-import path from 'path'
 import fs from 'fs'
+import path from 'path'
 import matter from 'gray-matter'
 import { readMarkdownFile, markdownToHtml, mdRemover } from './postUtils'
 import { INote, INoteMatterData, Topics, INoteCategories } from '@/types/post'

@@ -1,5 +1,5 @@
-import TechPostCard from '../TechPostCard/TechPostCard'
 import styled from 'styled-components'
+import TechPostCard from '../TechPostCard/TechPostCard'
 import { ITechPosts } from '@/types/post'
 
 interface TechPostCardListPros {

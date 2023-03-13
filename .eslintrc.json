@@ -16,14 +16,14 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "react-hooks"],
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "import"],
   "rules": {
     "no-var": "warn",
     "no-multiple-empty-lines": "warn",
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "eqeqeq": "warn",
     "dot-notation": "warn",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
     "react/destructuring-assignment": "warn",
     "react/jsx-pascal-case": "warn",
     "react/no-direct-mutation-state": "warn",
@@ -33,6 +33,25 @@
     "react/self-closing-comp": "warn",
     "react/jsx-curly-brace-presence": "warn",
     "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["sibling", "parent", "index"],
+          "type",
+          "unknown"
+        ],
+        "newlines-between": "never",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
     "prettier/prettier": [
       "error",
       {

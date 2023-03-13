@@ -1,13 +1,13 @@
-import React from 'react'
-import { GetServerSideProps } from 'next'
-import styled from 'styled-components'
-import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
-import { getSearchedPosts } from '@/utils/techUtils'
 import { ParsedUrlQuery } from 'querystring'
-import { getAllTags } from '@/utils/techUtils'
-import { ITechPosts } from '@/types/post'
-import TechSideBar from '@/components/TechSideBar/TechSideBar'
+import { GetServerSideProps } from 'next'
+import React from 'react'
+import styled from 'styled-components'
 import SearchResult from '@/components/SearchResult/SearchResult'
+import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
+import TechSideBar from '@/components/TechSideBar/TechSideBar'
+import { ITechPosts } from '@/types/post'
+import { getSearchedPosts } from '@/utils/techUtils'
+import { getAllTags } from '@/utils/techUtils'
 
 interface IQuery extends ParsedUrlQuery {
   keyword: string | undefined

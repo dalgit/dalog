@@ -1,13 +1,12 @@
-import React from 'react'
-import { Topic } from '@/types/post'
 import Link from 'next/link'
 import styled from 'styled-components'
+import { Topic } from '@/types/post'
 
 const NoteCategoryItem = ({
   topic,
   categoryName,
   currentNote,
-}: NoteCategoryItem) => {
+}: NoteCategoryItemProps) => {
   const { slug, title } = topic
   const notePath = `/note/${categoryName}/${slug}`
   const isCurrentNote = currentNote === slug
@@ -21,7 +20,7 @@ const NoteCategoryItem = ({
 
 export default NoteCategoryItem
 
-interface NoteCategoryItem {
+interface NoteCategoryItemProps {
   topic: Topic
   categoryName: string
   currentNote: string

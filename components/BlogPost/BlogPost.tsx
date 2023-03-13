@@ -1,10 +1,9 @@
-import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getIsProject, getIsTech } from '@/utils/getPostType'
-import { IProjectPost, ITechPost } from '@/types/post'
+import styled from 'styled-components'
 import PostContent from '../PostContent/PostContent'
-
+import { IProjectPost, ITechPost } from '@/types/post'
+import { getIsProject, getIsTech } from '@/utils/getPostType'
 type BlogPostProps = {
   post: IProjectPost | ITechPost
 }
@@ -17,30 +16,37 @@ const BlogPost = ({ post }: BlogPostProps) => {
   const isProject = getIsProject(post)
   const isTech = getIsTech(post)
 
+  const techTags = isTech && (
+    <>
+      {post.tags.map((tag) => (
+        <Link href="/" key={tag}>
+          #{tag}
+        </Link>
+      ))}
+    </>
+  )
+
+  const projectDescription = isProject && (
+    <span>
+      {post.description}-{post.type}
+    </span>
+  )
+
   return (
     <article>
-      <HeadBox>
+      <PostHeader>
         <h1>{title}</h1>
-        <HeadSubBox>
+        <PostHeaderInformation>
           <div>
-            {isTech &&
-              post.tags.map((tag) => (
-                <Link href="/" key={tag}>
-                  #{tag}
-                </Link>
-              ))}
-            {isProject && (
-              <h3>
-                {post.description}-{post.type}
-              </h3>
-            )}
+            {techTags}
+            {projectDescription}
           </div>
           <Date>{createdDate}</Date>
-        </HeadSubBox>
-      </HeadBox>
-      <ImageWrap>
-        <Image src={thumbnailPath} alt="thumbnail" width={600} height={400} />
-      </ImageWrap>
+        </PostHeaderInformation>
+      </PostHeader>
+      <ImageWrapper>
+        <Image src={thumbnailPath} width={600} height={400} alt="thumbnail" />
+      </ImageWrapper>
       <PostContent content={content} />
     </article>
   )
@@ -48,19 +54,25 @@ const BlogPost = ({ post }: BlogPostProps) => {
 
 export default BlogPost
 
-const ImageWrap = styled.div`
+const ImageWrapper = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: center;
 `
 
-const HeadSubBox = styled.div`
+const PostHeaderInformation = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #726ed7;
+
+  a {
+    color: #726ed7;
+    margin-right: 10px;
+  }
 `
 
-const HeadBox = styled.div`
+const PostHeader = styled.div`
   border-bottom: 1px solid #e4e4e4;
   padding-bottom: 25px;
 
@@ -70,15 +82,9 @@ const HeadBox = styled.div`
     margin-bottom: 20px;
     line-height: 130%;
   }
-
-  a {
-    font-size: 16px;
-    color: #726ed7;
-    margin-right: 10px;
-  }
 `
 
-const Date = styled.span`
+const Date = styled.time`
   font-size: 14px;
   color: #b5b5b5;
 `

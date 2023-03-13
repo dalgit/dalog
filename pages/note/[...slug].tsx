@@ -1,16 +1,16 @@
-import styled from 'styled-components'
-import { GetStaticPaths, GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { NextSeo } from 'next-seo'
+import styled from 'styled-components'
+import NoteSideBar from '@/components/NoteSideBar/NoteSideBar'
+import PostContent from '@/components/PostContent/PostContent'
+import { HOME_URL } from '@/data/meta'
+import { INote, INoteCategories } from '@/types/post'
 import {
   getNoteSlugs,
   getNoteCategories,
   getNoteBySlug,
 } from '@/utils/noteUtils'
-import { INote, INoteCategories } from '@/types/post'
-import NoteSideBar from '@/components/NoteSideBar/NoteSideBar'
-import { HOME_URL } from '@/data/meta'
-import { NextSeo } from 'next-seo'
-import PostContent from '@/components/PostContent/PostContent'
 
 interface IParams extends ParsedUrlQuery {
   slug: [string, string]

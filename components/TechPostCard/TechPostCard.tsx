@@ -1,7 +1,7 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import styled from 'styled-components'
 import { ITechPost } from '@/types/post'
-import Link from 'next/link'
 
 type PostCardProps = {
   post: ITechPost

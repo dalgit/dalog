@@ -1,12 +1,11 @@
-import path from 'path'
 import fs from 'fs/promises'
+import path from 'path'
 import {
   readMarkdownFile,
   markdownToHtml,
   markdownToHtmlOnlyP,
   mdRemover,
 } from './postUtils'
-
 import { ITechPosts, ITechPost, ITechPostMatterData } from '@/types/post'
 
 const techDirectory = path.join(process.cwd(), 'posts', 'tech')

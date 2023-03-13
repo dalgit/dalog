@@ -1,13 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
 import Image from 'next/image'
-import logo from '/public/assets/icon_logo.png'
 import hamburger from '/public/assets/hamburger.png'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import styled from 'styled-components'
 import { MAIN_MENUS as menus } from '@/constants/headerMenus'
-import { getPageType } from '@/utils/common/getPageType'
 import useListToggle from '@/hooks/useListToggle'
+import { getPageType } from '@/utils/common/getPageType'
+import logo from '/public/assets/icon_logo.png'
 
 const Header = () => {
   const { pathname } = useRouter()

@@ -1,6 +1,5 @@
-import React from 'react'
-import ProjectCard from '../ProjectCard/ProjectCard'
 import styled from 'styled-components'
+import ProjectCard from '../ProjectCard/ProjectCard'
 import { IProjectPost, IProjectPosts } from '@/types/post'
 
 interface ProjectCardListProps {

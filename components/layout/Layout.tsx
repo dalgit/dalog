@@ -1,9 +1,8 @@
-import React from 'react'
-import Header from './Header'
 import { ReactNode } from 'react'
-import Footer from './Footer'
 import styled from 'styled-components'
 import BlogNavigation from './BlogNavigation'
+import Footer from './Footer'
+import Header from './Header'
 
 type LayoutProps = { children: ReactNode }
 

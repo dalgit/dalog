@@ -1,8 +1,8 @@
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 import styled from 'styled-components'
 import icon_search from '/public/assets/icon_search.svg'
-import Image from 'next/image'
-import { useState } from 'react'
-import { useRouter } from 'next/router'
 
 const TechSearchBar = () => {
   const router = useRouter()

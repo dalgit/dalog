@@ -1,7 +1,6 @@
-import React from 'react'
 import Link from 'next/link'
-import styled from 'styled-components'
 import { useRouter } from 'next/router'
+import styled from 'styled-components'
 
 interface SideBarProps {
   tags: { [tag: string]: number }

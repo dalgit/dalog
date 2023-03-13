@@ -1,10 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useRouter } from 'next/router'
-import { BLOG_NAVIGATION_MENUS as menus } from '@/constants/headerMenus'
 import Link from 'next/link'
-import { getBlogType } from '@/utils/common/getBlogType'
+import { useRouter } from 'next/router'
+import styled from 'styled-components'
+import { BLOG_NAVIGATION_MENUS as menus } from '@/constants/headerMenus'
 import { BlogType } from '@/constants/pageTypes'
+import { getBlogType } from '@/utils/common/getBlogType'
 
 const BlogNavigation = () => {
   const { pathname } = useRouter()

@@ -1,10 +1,9 @@
-import React from 'react'
-import NoteCategory from '../NoteCategory/NoteCategory'
-import styled from 'styled-components'
-import { INoteCategories } from '@/types/post'
-import arrow from '/public/assets/right-arrow.png'
 import Image from 'next/image'
+import styled from 'styled-components'
 import useListToggle from '@/hooks/useListToggle'
+import { INoteCategories } from '@/types/post'
+import NoteCategory from '../NoteCategory/NoteCategory'
+import arrow from '/public/assets/right-arrow.png'
 
 interface NoteSideBarProps {
   categories: INoteCategories

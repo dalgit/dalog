@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { capitalizer } from '@/utils/common/capitalizer'
 import arrow from '/public/assets/arrow.svg'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { INoteCategory } from '@/types/post'
+import styled from 'styled-components'
 import NoteCategoryItem from '../NoteCategoryItem/NoteCategoryItem'
+import { INoteCategory } from '@/types/post'
+import { capitalizer } from '@/utils/common/capitalizer'
+import { useState, useEffect } from 'react'
 
 interface NoteCategoryProps {
   category: INoteCategory
@@ -20,7 +20,7 @@ const NoteCategory = ({ category }: NoteCategoryProps) => {
   const isCurrentCategory = currentCategory === name
 
   useEffect(() => {
-    if (isCurrentCategory) setIsCategoryOpen(true)
+    setIsCategoryOpen(isCurrentCategory)
   }, [isCurrentCategory])
 
   return (
@@ -32,9 +32,9 @@ const NoteCategory = ({ category }: NoteCategoryProps) => {
         <CategoryName>{capitalizedName}</CategoryName>
       </CategoryNameBox>
 
-      <ul>
-        {isCategoryOpen &&
-          topics.map((topic) => (
+      {isCategoryOpen && (
+        <ul>
+          {topics.map((topic) => (
             <NoteCategoryItem
               key={topic.slug}
               topic={topic}
@@ -42,7 +42,8 @@ const NoteCategory = ({ category }: NoteCategoryProps) => {
               currentNote={currentNote}
             />
           ))}
-      </ul>
+        </ul>
+      )}
     </>
   )
 }
