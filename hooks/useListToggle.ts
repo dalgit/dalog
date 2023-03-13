@@ -16,7 +16,7 @@ const useListToggle = <T extends HTMLElement>() => {
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick)
     }
-  }, [listRef])
+  }, [])
 
   const toggleList = () => {
     setIsListOpen(!isListOpen)

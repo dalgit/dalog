@@ -14,7 +14,7 @@ const NoteSideBar = ({ categories }: NoteSideBarProps) => {
   const { isListOpen, listRef, toggleList } = useListToggle<HTMLUListElement>()
 
   return (
-    <DDDD>
+    <>
       <SideBarOpenButton onClick={toggleList}>
         <Image src={arrow} alt="arrow" width={30} />
       </SideBarOpenButton>
@@ -23,13 +23,11 @@ const NoteSideBar = ({ categories }: NoteSideBarProps) => {
           <NoteCategory key={category.name} category={category} />
         ))}
       </NoteSideBarLayout>
-    </DDDD>
+    </>
   )
 }
 
 export default NoteSideBar
-
-const DDDD = styled.div``
 
 const NoteSideBarLayout = styled.ul<{ isListOpen: boolean }>`
   border-right: 2px solid #eaeaea;

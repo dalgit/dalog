@@ -21,13 +21,13 @@ const NoteCategory = ({ category }: NoteCategoryProps) => {
 
   useEffect(() => {
     if (isCurrentCategory) setIsCategoryOpen(true)
-  }, [])
+  }, [isCurrentCategory])
 
   return (
     <>
       <CategoryNameBox onClick={() => setIsCategoryOpen(!isCategoryOpen)}>
         <ImageWrapper isCategoryOpen={isCategoryOpen}>
-          <Image src={arrow} width={10} height={10} alt={'arrow'} />
+          <Image src={arrow} width={10} height={10} alt="arrow" />
         </ImageWrapper>
         <CategoryName>{capitalizedName}</CategoryName>
       </CategoryNameBox>

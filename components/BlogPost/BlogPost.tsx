@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -26,7 +25,7 @@ const BlogPost = ({ post }: BlogPostProps) => {
           <div>
             {isTech &&
               post.tags.map((tag) => (
-                <Link href={'/'} key={tag}>
+                <Link href="/" key={tag}>
                   #{tag}
                 </Link>
               ))}
