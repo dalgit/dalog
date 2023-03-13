@@ -2,8 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
 import PostContent from '../PostContent/PostContent'
-import { IProjectPost, ITechPost } from '@/types/post'
+import { IProjectPost } from '@/types/project'
+import { ITechPost } from '@/types/tech'
 import { getIsProject, getIsTech } from '@/utils/getPostType'
+
 type BlogPostProps = {
   post: IProjectPost | ITechPost
 }

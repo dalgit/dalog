@@ -1,4 +1,5 @@
-import { IProjectPost, ITechPost } from '@/types/post'
+import { IProjectPost } from '@/types/project'
+import { ITechPost } from '@/types/tech'
 
 export const getIsProject = (
   post: IProjectPost | ITechPost,

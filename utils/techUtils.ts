@@ -6,7 +6,7 @@ import {
   markdownToHtmlOnlyP,
   mdRemover,
 } from './postUtils'
-import { ITechPosts, ITechPost, ITechPostMatterData } from '@/types/post'
+import { ITechPosts, ITechPost, ITechPostMatterData } from '@/types/tech'
 
 const techDirectory = path.join(process.cwd(), 'posts', 'tech')
 

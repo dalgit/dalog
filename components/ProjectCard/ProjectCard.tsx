@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
-import { IProjectPost } from '@/types/post'
+import { IProjectPost } from '@/types/project'
 
 interface ProjectCardProps {
   post: IProjectPost

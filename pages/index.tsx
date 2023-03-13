@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
 import TechSideBar from '@/components/TechSideBar/TechSideBar'
-import { ITechPosts } from '@/types/post'
+import { ITechPosts } from '@/types/tech'
 import { getAllTechs, getAllTags } from '@/utils/techUtils'
 
 interface TechPostListPageProps {

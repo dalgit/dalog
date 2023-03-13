@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import NoteSideBar from '@/components/NoteSideBar/NoteSideBar'
 import PostContent from '@/components/PostContent/PostContent'
 import { HOME_URL } from '@/data/meta'
-import { INote, INoteCategories } from '@/types/post'
+import { INote, INoteCategories } from '@/types/note'
 import {
   getNoteSlugs,
   getNoteCategories,

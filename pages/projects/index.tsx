@@ -1,6 +1,6 @@
 import React from 'react'
 import ProjectCardList from '@/components/ProjectCardList/ProjectCardList'
-import { IPostGroupByYear } from '@/types/post'
+import { IPostGroupByYear } from '@/types/project'
 import { getAllProjects, getPostsGroupedByYear } from '@/utils/projectUtils'
 
 const ProjectListPage = ({ postsGroup }: ProjectListPageProps) => {

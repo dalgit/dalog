@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import SearchResult from '@/components/SearchResult/SearchResult'
 import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
 import TechSideBar from '@/components/TechSideBar/TechSideBar'
-import { ITechPosts } from '@/types/post'
+import { ITechPosts } from '@/types/tech'
 import { getSearchedPosts } from '@/utils/techUtils'
 import { getAllTags } from '@/utils/techUtils'
 

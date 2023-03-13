@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { readMarkdownFile, markdownToHtml, mdRemover } from './postUtils'
-import { INote, INoteMatterData, Topics, INoteCategories } from '@/types/post'
+import { INote, INoteMatterData, Topics, INoteCategories } from '@/types/note'
 
 const noteDirectory = path.join(process.cwd(), 'posts', 'note')
 const noteFolders = fs.readdirSync(noteDirectory)

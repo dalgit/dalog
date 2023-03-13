@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import BlogPost from '@/components/BlogPost/BlogPost'
 import { HOME_URL } from '@/data/meta'
-import { IProjectPost } from '@/types/post'
+import { IProjectPost } from '@/types/project'
 import { getProjectBySlug } from '@/utils/projectUtils'
 import { projectSlugs } from '@/utils/projectUtils'
 interface IParams extends ParsedUrlQuery {

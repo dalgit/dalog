@@ -6,7 +6,7 @@ import {
   IProjectPost,
   IProjectMatterData,
   IPostGroupByYear,
-} from '@/types/post'
+} from '@/types/project'
 
 const projectsDirectory = path.join(process.cwd(), 'posts', 'projects')
 const projectsFiles = fs.readdirSync(projectsDirectory)

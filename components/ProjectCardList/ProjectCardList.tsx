@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import ProjectCard from '../ProjectCard/ProjectCard'
-import { IProjectPost, IProjectPosts } from '@/types/post'
+import { IProjectPost, IProjectPosts } from '@/types/project'
 
 interface ProjectCardListProps {
   year: number

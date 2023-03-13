@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import NoteCategoryItem from '../NoteCategoryItem/NoteCategoryItem'
-import { INoteCategory } from '@/types/post'
+import { INoteCategory } from '@/types/note'
 import { capitalizer } from '@/utils/common/capitalizer'
 import { useState, useEffect } from 'react'
 

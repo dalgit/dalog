@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { Topic } from '@/types/post'
+import { Topic } from '@/types/note'
 
 const NoteCategoryItem = ({
   topic,

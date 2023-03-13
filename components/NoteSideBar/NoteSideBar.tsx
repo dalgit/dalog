@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 import useListToggle from '@/hooks/useListToggle'
-import { INoteCategories } from '@/types/post'
+import { INoteCategories } from '@/types/note'
 import NoteCategory from '../NoteCategory/NoteCategory'
 import arrow from '/public/assets/right-arrow.png'
 
