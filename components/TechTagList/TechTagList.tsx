@@ -61,11 +61,8 @@ const BoxTitle = styled.div`
   margin-bottom: 23px;
   font-size: 25px;
   color: ${({ theme }) => theme.colors.secondary};
-  /* 
-  @media ${({ theme }) => theme.device.tabletMax} {
-    color: black;
-  } */
 `
+
 const List = styled.ul`
   @media ${({ theme }) => theme.device.tabletMax} {
     display: flex;

@@ -56,8 +56,7 @@ const ContentBox = styled.div`
 
 const NotePageLayout = styled.div`
   display: flex;
-  /* margin-bottom: 100px; */
-  /* min-height: 100%; */
+
   height: 100%;
 `
 

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import NoteCategoryItem from '../NoteCategoryItem/NoteCategoryItem'
-import { INoteCategory } from '@/types/note'
+import { INoteCategory, INoteSlug } from '@/types/note'
 import { capitalizer } from '@/utils/common/capitalizer'
 import { useState, useEffect } from 'react'
 
@@ -12,12 +12,15 @@ interface NoteCategoryProps {
 }
 
 const NoteCategory = ({ category }: NoteCategoryProps) => {
-  const router = useRouter()
+  const { asPath, query } = useRouter()
+  const [currentCategoryName] = query.slug as INoteSlug
+  const { name: categoryName, topics } = category
   const [isCategoryOpen, setIsCategoryOpen] = useState<boolean>(false)
-  const [currentCategory, currentNote] = router.query.slug as [string, string]
-  const { name, topics } = category
-  const capitalizedName = capitalizer(name)
-  const isCurrentCategory = currentCategory === name
+
+  const isCurrentCategory = currentCategoryName === categoryName
+  const getIsCurrentTopic = (path: string) => asPath === path
+
+  const toggleList = () => setIsCategoryOpen(!isCategoryOpen)
 
   useEffect(() => {
     setIsCategoryOpen(isCurrentCategory)
@@ -25,11 +28,11 @@ const NoteCategory = ({ category }: NoteCategoryProps) => {
 
   return (
     <>
-      <CategoryNameBox onClick={() => setIsCategoryOpen(!isCategoryOpen)}>
+      <CategoryNameBox onClick={toggleList}>
         <ImageWrapper isCategoryOpen={isCategoryOpen}>
           <Image src={arrow} width={10} height={10} alt="arrow" />
         </ImageWrapper>
-        <CategoryName>{capitalizedName}</CategoryName>
+        <CategoryName>{capitalizer(categoryName)}</CategoryName>
       </CategoryNameBox>
 
       {isCategoryOpen && (
@@ -38,8 +41,8 @@ const NoteCategory = ({ category }: NoteCategoryProps) => {
             <NoteCategoryItem
               key={topic.slug}
               topic={topic}
-              categoryName={name}
-              currentNote={currentNote}
+              categoryName={categoryName}
+              getIsCurrentTopic={getIsCurrentTopic}
             />
           ))}
         </ul>

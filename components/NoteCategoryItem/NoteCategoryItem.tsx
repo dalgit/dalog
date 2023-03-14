@@ -5,34 +5,34 @@ import { Topic } from '@/types/note'
 interface NoteCategoryItemProps {
   topic: Topic
   categoryName: string
-  currentNote: string
+  getIsCurrentTopic: (slug: string) => boolean
 }
 
 const NoteCategoryItem = ({
   topic,
   categoryName,
-  currentNote,
+  getIsCurrentTopic,
 }: NoteCategoryItemProps) => {
   const { slug, title } = topic
-  const notePath = `/note/${categoryName}/${slug}`
-  const isCurrentNote = currentNote === slug
+  const path = `/note/${categoryName}/${slug}`
+  const isCurrentTopic = getIsCurrentTopic(path)
 
   return (
-    <Item isCurrentNote={isCurrentNote} key={slug}>
-      <Link href={notePath}>{title}</Link>
+    <Item isCurrentTopic={isCurrentTopic} key={slug}>
+      <Link href={path}>{title}</Link>
     </Item>
   )
 }
 
 export default NoteCategoryItem
 
-const Item = styled.li<{ isCurrentNote: boolean }>`
+const Item = styled.li<{ isCurrentTopic: boolean }>`
   margin: 15px 0px 15px 30px;
 
   a {
     font-size: 16px;
     padding-left: 5px;
-    color: ${({ isCurrentNote, theme }) =>
-      isCurrentNote ? theme.colors.primary : 'black'};
+    color: ${({ isCurrentTopic, theme }) =>
+      isCurrentTopic ? theme.colors.primary : 'black'};
   }
 `
