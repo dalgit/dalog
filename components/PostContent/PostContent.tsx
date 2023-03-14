@@ -19,8 +19,7 @@ const ContentBox = styled.div`
   line-height: 1.5;
   font-size: 1.125rem;
   font-weight: 400;
-  color: #333;
-
+  color: ${({ theme }) => theme.colors.font};
   h1,
   h2,
   h3,
@@ -49,7 +48,7 @@ const ContentBox = styled.div`
   }
 
   a {
-    color: #0070f3;
+    color: ${({ theme }) => theme.colors.post_link};
     text-decoration: none;
   }
 

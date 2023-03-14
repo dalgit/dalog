@@ -34,7 +34,8 @@ const NavigationItem = styled.li<{ isCurrentUrl: boolean }>`
   margin-bottom: 70px;
 
   a {
-    color: ${({ isCurrentUrl }) => (isCurrentUrl ? '#6c6767' : '#AAAAAA')};
+    color: ${({ isCurrentUrl, theme }) =>
+      isCurrentUrl ? theme.colors.lightBlack : theme.colors.gray};
   }
 `
 const NavigationList = styled.ul`

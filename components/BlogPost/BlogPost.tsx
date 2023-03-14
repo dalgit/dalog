@@ -66,16 +66,16 @@ const PostHeaderInformation = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #726ed7;
+  color: ${({ theme }) => theme.colors.primary};
 
   a {
-    color: #726ed7;
+    color: ${({ theme }) => theme.colors.primary};
     margin-right: 10px;
   }
 `
 
 const PostHeader = styled.div`
-  border-bottom: 1px solid #e4e4e4;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border_normal};
   padding-bottom: 25px;
 
   h1 {
@@ -88,5 +88,5 @@ const PostHeader = styled.div`
 
 const Date = styled.time`
   font-size: 14px;
-  color: #b5b5b5;
+  color: ${({ theme }) => theme.colors.gray};
 `

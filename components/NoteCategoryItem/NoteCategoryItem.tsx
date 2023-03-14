@@ -32,6 +32,7 @@ const Item = styled.li<{ isCurrentNote: boolean }>`
   a {
     font-size: 16px;
     padding-left: 5px;
-    color: ${({ isCurrentNote }) => (isCurrentNote ? '#6028e1' : 'black')};
+    color: ${({ isCurrentNote, theme }) =>
+      isCurrentNote ? theme.colors.primary : 'black'};
   }
 `

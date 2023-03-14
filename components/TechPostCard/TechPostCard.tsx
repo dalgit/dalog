@@ -95,8 +95,8 @@ const Tags = styled.div`
 
   a {
     margin-right: 10px;
-    color: #726ed7;
-    font-size: 15px;
+    color: ${({ theme }) => theme.colors.secondary};
+    font-size: 16px;
   }
 `
 

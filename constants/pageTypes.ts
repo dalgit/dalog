@@ -3,6 +3,7 @@ export enum PagePath {
   TECH = '/tech',
   NOTE = '/note',
   PROJECTS = '/projects',
+  SEARCH = '/search',
   INFO = '/info',
 }
 

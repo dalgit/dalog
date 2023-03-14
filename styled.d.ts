@@ -14,5 +14,21 @@ declare module 'styled-components' {
       tabletMax: string
       laptop: string
     }
+    colors: {
+      primary: string
+      secondary: string
+      tertiary: string
+      quaternary: string
+
+      gray: string
+      lightGray: string
+      lightBlack: string
+
+      border_light: string
+      border_normal: string
+
+      post_font: string
+      post_link: string
+    }
   }
 }

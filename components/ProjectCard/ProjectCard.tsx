@@ -56,7 +56,7 @@ const BoxHeader = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  color: gray;
+  color: ${({ theme }) => theme.colors.gray};
 `
 
 const Content = styled.div`

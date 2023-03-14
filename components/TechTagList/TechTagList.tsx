@@ -60,11 +60,11 @@ const BoxTitle = styled.div`
   font-weight: bold;
   margin-bottom: 23px;
   font-size: 25px;
-  color: #5f31d8;
-
+  color: ${({ theme }) => theme.colors.secondary};
+  /* 
   @media ${({ theme }) => theme.device.tabletMax} {
     color: black;
-  }
+  } */
 `
 const List = styled.ul`
   @media ${({ theme }) => theme.device.tabletMax} {
@@ -80,11 +80,12 @@ const Item = styled.li<{ isCurrentTag: boolean }>`
   width: fit-content;
   border-radius: 10px;
   padding: 5px;
-  background-color: ${({ isCurrentTag }) =>
-    isCurrentTag ? '#C8B7F2' : '#f7f7f8;'};
+  font-weight: bolder;
+  background-color: ${({ isCurrentTag, theme }) =>
+    isCurrentTag ? theme.colors.quaternary : theme.colors.lightGray};
 
   a {
-    font-size: 16px;
+    font-size: 17px;
     color: ${({ isCurrentTag }) => (isCurrentTag ? 'white' : 'gray;')};
   }
 `

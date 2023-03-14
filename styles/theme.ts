@@ -15,6 +15,23 @@ const deviceSizes = {
   laptop: '1024px',
 }
 
+const colors = {
+  primary: '#A66CFF',
+  secondary: '#9C9EFE',
+  tertiary: '#AFB4FF',
+  quaternary: '#CBD9FC',
+
+  gray: '#AAAAAA',
+  lightGray: '#f7f7f8;',
+  lightBlack: '#6c6767',
+
+  border_light: '#f5f5f5',
+  border_normal: '#e4e4e4',
+
+  post_font: '#333',
+  post_link: '#0070f3',
+}
+
 const device = {
   mobile: `screen and (max-width: ${deviceSizes.mobile})`,
   tablet: `screen and (min-width:${deviceSizes.mobile}) and (max-width: ${deviceSizes.tablet})`,
@@ -25,6 +42,7 @@ const device = {
 const theme: DefaultTheme = {
   pageBaseSize,
   device,
+  colors,
 }
 
 export default theme

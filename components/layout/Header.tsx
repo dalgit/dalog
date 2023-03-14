@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { MAIN_MENUS as menus } from '@/constants/headerMenus'
 import useListToggle from '@/hooks/useListToggle'
 import { getPageType } from '@/utils/common/getPageType'
-import logo from '/public/assets/icon_logo.png'
+import logo from '/public/assets/icon_logo.svg'
 
 const Header = () => {
   const { pathname } = useRouter()
@@ -71,7 +71,7 @@ const HeaderLayout = styled.nav<{ isListOpen: boolean }>`
   top: 0;
   left: 0;
   width: 100%;
-  border-bottom: 1.5px solid #f5f5f5;
+  border-bottom: 1.5px solid ${({ theme }) => theme.colors.border_light};
   background-color: white;
   height: ${({ theme }) => theme.pageBaseSize.headerHeight};
   z-index: 10;
@@ -100,10 +100,12 @@ const Item = styled.div<{ isCurrentUrl: boolean }>`
   align-items: center;
   height: 100%;
   font-size: 26px;
-  border-bottom: ${({ isCurrentUrl }) => isCurrentUrl && '4px solid #6028e1'};
+  border-bottom: ${({ isCurrentUrl, theme }) =>
+    isCurrentUrl && `4px solid ${theme.colors.secondary}`};
 
   a {
-    color: ${({ isCurrentUrl }) => (isCurrentUrl ? '#6028e1' : 'black')};
+    color: ${({ isCurrentUrl, theme }) =>
+      isCurrentUrl ? theme.colors.secondary : 'black'};
   }
 
   &:not(:last-child) {
