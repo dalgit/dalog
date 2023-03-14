@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import hamburger from '/public/assets/hamburger.png'
+import hamburger from '/public/assets/hamburger_button.png'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { MAIN_MENUS as menus } from '@/constants/headerMenus'
 import useListToggle from '@/hooks/useListToggle'
 import { getPageType } from '@/utils/common/getPageType'
-import logo from '/public/assets/icon_logo.svg'
+import logo from '/public/assets/dalog_logo.svg'
 
 const Header = () => {
   const { pathname } = useRouter()

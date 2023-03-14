@@ -1,15 +1,16 @@
-import icon_github from '/public/assets/icon_github.svg'
+import logo from '/public/assets/github_logo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 import styled from 'styled-components'
+import { SOCIAL } from '@/data/meta'
 
 const Footer = () => {
   return (
     <FooterLayout>
-      <Link href="https://github.com/dalgit">
-        <Image src={icon_github} width={30} alt="icon_github" />
+      <Link href={SOCIAL.github}>
+        <Image src={logo} width={30} alt="github" />
       </Link>
-      <span>Copyright © Dalgit 2023 | tmp@tmp.com</span>
+      <span>Copyright © Dalgit 2023 | {SOCIAL.email}</span>
     </FooterLayout>
   )
 }

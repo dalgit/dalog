@@ -16,7 +16,7 @@ const SEO: DefaultSeoProps = {
     url: 'http://www.dalog.com/',
     site_name: 'Dalog',
     title: '프론트엔드 개발자 블로그',
-    images: [{ url: '/assets/icon_logo.png' }],
+    images: [{ url: '/assets/dalog_logo.svg' }],
   },
 }
 

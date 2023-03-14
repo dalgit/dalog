@@ -1,4 +1,4 @@
-import arrow from '/public/assets/arrow.svg'
+import arrow from '/public/assets/small_arrow_icon.svg'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'

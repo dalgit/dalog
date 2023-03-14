@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import useListToggle from '@/hooks/useListToggle'
 import { INoteCategories } from '@/types/note'
 import NoteCategory from '../NoteCategory/NoteCategory'
-import arrow from '/public/assets/right-arrow.png'
+import arrow from '/public/assets/right_arrow_button.png'
 
 interface NoteSideBarProps {
   categories: INoteCategories
