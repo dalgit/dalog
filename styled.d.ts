@@ -15,10 +15,11 @@ declare module 'styled-components' {
       laptop: string
     }
     colors: {
-      primary: string
-      secondary: string
-      tertiary: string
-      quaternary: string
+      _B1B2FF: string
+      _CDCCFF: string
+      _8782CD: string
+      _878ECD: string
+      _CBD9FC: string
 
       gray: string
       lightGray: string

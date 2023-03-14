@@ -28,11 +28,10 @@ export default NoteCategoryItem
 
 const Item = styled.li<{ isCurrentTopic: boolean }>`
   margin: 15px 0px 15px 30px;
-
   a {
     font-size: 16px;
     padding-left: 5px;
     color: ${({ isCurrentTopic, theme }) =>
-      isCurrentTopic ? theme.colors.primary : 'black'};
+      isCurrentTopic ? theme.colors._8782CD : theme.colors.gray};
   }
 `

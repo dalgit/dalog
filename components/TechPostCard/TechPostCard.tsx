@@ -22,7 +22,7 @@ const TechPostCard = ({ post }: PostCardProps) => {
         <Tags>
           {tags?.map((tag) => (
             <Link href={`/tech/tag/${tag}`} key={tag}>
-              #{tag}
+              # {tag}
             </Link>
           ))}
         </Tags>
@@ -94,9 +94,10 @@ const Tags = styled.div`
   -webkit-box-orient: vertical;
 
   a {
-    margin-right: 10px;
-    color: ${({ theme }) => theme.colors.secondary};
+    margin-right: 15px;
+    color: ${({ theme }) => theme.colors._8782CD};
     font-size: 16px;
+    line-height: normal;
   }
 `
 

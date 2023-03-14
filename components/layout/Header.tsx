@@ -101,11 +101,11 @@ const Item = styled.div<{ isCurrentUrl: boolean }>`
   height: 100%;
   font-size: 26px;
   border-bottom: ${({ isCurrentUrl, theme }) =>
-    isCurrentUrl && `4px solid ${theme.colors.secondary}`};
+    isCurrentUrl && `4px solid ${theme.colors._B1B2FF}`};
 
   a {
     color: ${({ isCurrentUrl, theme }) =>
-      isCurrentUrl ? theme.colors.secondary : 'black'};
+      isCurrentUrl ? theme.colors._B1B2FF : 'black'};
   }
 
   &:not(:last-child) {

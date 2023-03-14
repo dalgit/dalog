@@ -1,7 +1,7 @@
 ---
 title: 'aaa'
 createdDate: '2023-02-16'
-tags: ['f', 'g', 'h']
+tags: ['react', 'nextjs', 'styled-compo']
 thumbnail: 'ddat2.jpg'
 ---
 

@@ -33,5 +33,5 @@ const ProjectCardListLayout = styled.div`
 const Year = styled.p`
   font-size: 30px;
   font-weight: bolder;
-  color: ${({ theme }) => theme.colors.tertiary};
+  color: ${({ theme }) => theme.colors._B1B2FF};
 `

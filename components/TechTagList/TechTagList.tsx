@@ -48,7 +48,7 @@ const TechTagListLayout = styled.div`
       height: 5px;
     }
     ::-webkit-scrollbar-thumb {
-      background: #b89ef6;
+      background: ${({ theme }) => theme.colors._878ECD}
       border-radius: 2px;
     }
     ::-webkit-scrollbar-track {
@@ -60,7 +60,7 @@ const BoxTitle = styled.div`
   font-weight: bold;
   margin-bottom: 23px;
   font-size: 25px;
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors._878ECD};
 `
 
 const List = styled.ul`
@@ -76,10 +76,9 @@ const Item = styled.li<{ isCurrentTag: boolean }>`
   font-weight: 300;
   width: fit-content;
   border-radius: 10px;
-  padding: 5px;
-  font-weight: bolder;
+  padding: 6px;
   background-color: ${({ isCurrentTag, theme }) =>
-    isCurrentTag ? theme.colors.quaternary : theme.colors.lightGray};
+    isCurrentTag ? theme.colors._B1B2FF : theme.colors.lightGray};
 
   a {
     font-size: 17px;

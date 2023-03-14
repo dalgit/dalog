@@ -22,7 +22,7 @@ const BlogPost = ({ post }: BlogPostProps) => {
     <>
       {post.tags.map((tag) => (
         <Link href="/" key={tag}>
-          #{tag}
+          # {tag}
         </Link>
       ))}
     </>
@@ -47,7 +47,7 @@ const BlogPost = ({ post }: BlogPostProps) => {
         </PostHeaderInformation>
       </PostHeader>
       <ImageWrapper>
-        <Image src={thumbnailPath} width={600} height={400} alt="thumbnail" />
+        <Image src={thumbnailPath} fill alt="thumbnail" />
       </ImageWrapper>
       <PostContent content={content} />
     </article>
@@ -57,20 +57,23 @@ const BlogPost = ({ post }: BlogPostProps) => {
 export default BlogPost
 
 const ImageWrapper = styled.div`
-  margin: 30px 0px;
-  display: flex;
-  justify-content: center;
+  position: relative;
+  max-width: 70%;
+  aspect-ratio: 1/0.6;
+  margin: 1.5rem auto;
 `
 
 const PostHeaderInformation = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: ${({ theme }) => theme.colors.primary};
+  font-size: 19px;
+  color: ${({ theme }) => theme.colors._8782CD};
 
   a {
-    color: ${({ theme }) => theme.colors.primary};
-    margin-right: 10px;
+    color: inherit;
+    font-size: inherit;
+    margin-right: 20px;
   }
 `
 

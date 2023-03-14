@@ -24,7 +24,7 @@ const SearchResultLayout = styled.div`
   font-size: 25px;
   font-weight: bolder;
   margin-bottom: 30px;
-  background-color: ${({ theme }) => theme.colors.tertiary};
+  background-color: ${({ theme }) => theme.colors._CBD9FC};
   color: white;
   padding: 5px;
 `

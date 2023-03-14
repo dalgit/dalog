@@ -16,11 +16,11 @@ const deviceSizes = {
 }
 
 const colors = {
-  primary: '#A66CFF',
-  secondary: '#9C9EFE',
-  tertiary: '#AFB4FF',
-  quaternary: '#CBD9FC',
-
+  _B1B2FF: '#B1B2FF',
+  _CDCCFF: '#CDCCFF',
+  _8782CD: '#8782CD',
+  _878ECD: '#878ECD',
+  _CBD9FC: '#CBD9FC',
   gray: '#AAAAAA',
   lightGray: '#f7f7f8;',
   lightBlack: '#6c6767',

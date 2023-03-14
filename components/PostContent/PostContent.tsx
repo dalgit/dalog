@@ -60,6 +60,7 @@ const ContentBox = styled.div`
     max-width: 70%;
     margin: 1.5rem auto;
     display: block;
+    aspect-ratio: 1/0.6;
   }
 
   pre {
