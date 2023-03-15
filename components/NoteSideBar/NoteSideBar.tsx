@@ -1,25 +1,31 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-import useListToggle from '@/hooks/useListToggle'
-import { INoteCategories } from '@/types/note'
 import NoteCategory from '../NoteCategory/NoteCategory'
 import arrow from '/public/assets/right_arrow_button.png'
-
+import useClickOutside from '@/hooks/useClickOutside'
+import useToggle from '@/hooks/useToggle'
+import { INoteCategories } from '@/types/note'
 interface NoteSideBarProps {
   categories: INoteCategories
 }
 
 const NoteSideBar = ({ categories }: NoteSideBarProps) => {
-  const { isListOpen, listRef, toggleList } = useListToggle<HTMLUListElement>()
+  const { isActive: isSideBarOpen, toggle: toggleSideBar } = useToggle()
+  const handleSideBarClose = () => isSideBarOpen && toggleSideBar()
+  const sideBarRef = useClickOutside<HTMLUListElement>(handleSideBarClose)
 
   return (
     <>
-      <SideBarOpenButton onClick={toggleList}>
+      <SideBarOpenButton onClick={toggleSideBar}>
         <Image src={arrow} alt="arrow" width={24} />
       </SideBarOpenButton>
-      <NoteSideBarLayout isListOpen={isListOpen} ref={listRef}>
+      <NoteSideBarLayout isSideBarOpen={isSideBarOpen} ref={sideBarRef}>
         {categories.map((category) => (
-          <NoteCategory key={category.name} category={category} />
+          <NoteCategory
+            key={category.name}
+            category={category}
+            toggleSideBar={toggleSideBar}
+          />
         ))}
       </NoteSideBarLayout>
     </>
@@ -28,7 +34,7 @@ const NoteSideBar = ({ categories }: NoteSideBarProps) => {
 
 export default NoteSideBar
 
-const NoteSideBarLayout = styled.ul<{ isListOpen: boolean }>`
+const NoteSideBarLayout = styled.ul<{ isSideBarOpen: boolean }>`
   border-right: 2px solid #eaeaea;
   max-width: 160px;
   display: flex;
@@ -48,7 +54,7 @@ const NoteSideBarLayout = styled.ul<{ isListOpen: boolean }>`
     z-index: 15;
     height: 100%;
     left: 0;
-    left: ${({ isListOpen }) => (isListOpen ? '0' : `-160px`)};
+    left: ${({ isSideBarOpen }) => (isSideBarOpen ? '0' : `-160px`)};
     background-color: white;
 
     display: flex;

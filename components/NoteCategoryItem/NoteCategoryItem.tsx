@@ -6,19 +6,21 @@ interface NoteCategoryItemProps {
   topic: Topic
   categoryName: string
   getIsCurrentTopic: (slug: string) => boolean
+  toggleSideBar: () => void
 }
 
 const NoteCategoryItem = ({
   topic,
   categoryName,
   getIsCurrentTopic,
+  toggleSideBar,
 }: NoteCategoryItemProps) => {
   const { slug, title } = topic
   const path = `/note/${categoryName}/${slug}`
   const isCurrentTopic = getIsCurrentTopic(path)
 
   return (
-    <Item isCurrentTopic={isCurrentTopic} key={slug}>
+    <Item isCurrentTopic={isCurrentTopic} onClick={toggleSideBar}>
       <Link href={path}>{title}</Link>
     </Item>
   )

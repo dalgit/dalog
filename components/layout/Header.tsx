@@ -4,14 +4,19 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { MAIN_MENUS as menus } from '@/constants/headerMenus'
-import useListToggle from '@/hooks/useListToggle'
+import useClickOutside from '@/hooks/useClickOutside'
+import useToggle from '@/hooks/useToggle'
 import { getPageType } from '@/utils/common/getPageType'
 import logo from '/public/assets/dalog_logo.svg'
 
 const Header = () => {
   const { pathname } = useRouter()
   const pageType = getPageType(pathname)
-  const { isListOpen, listRef, toggleList } = useListToggle<HTMLDivElement>()
+
+  const { isActive: isListOpen, toggle } = useToggle()
+
+  const handleListClose = () => isListOpen && toggle()
+  const listRef = useClickOutside<HTMLDivElement>(handleListClose)
 
   return (
     <HeaderLayout isListOpen={isListOpen}>
@@ -24,14 +29,14 @@ const Header = () => {
             const isCurrentUrl = menu.type === pageType
             return (
               <Item isCurrentUrl={isCurrentUrl} key={menu.id}>
-                <Link href={menu.path} onClick={toggleList}>
+                <Link href={menu.path} onClick={toggle}>
                   {menu.name}
                 </Link>
               </Item>
             )
           })}
         </List>
-        <HamburgerButton onClick={toggleList}>
+        <HamburgerButton onClick={toggle}>
           <Image alt="logo" src={hamburger} height={24} />
         </HamburgerButton>
       </HeaderInner>

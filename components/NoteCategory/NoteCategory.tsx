@@ -6,16 +6,19 @@ import NoteCategoryItem from '../NoteCategoryItem/NoteCategoryItem'
 import { INoteCategory, INoteSlug } from '@/types/note'
 import { capitalizer } from '@/utils/common/capitalizer'
 import { useState, useEffect } from 'react'
+import useToggle from '@/hooks/useToggle'
 
 interface NoteCategoryProps {
   category: INoteCategory
+  toggleSideBar: () => void
 }
 
-const NoteCategory = ({ category }: NoteCategoryProps) => {
+const NoteCategory = ({ category, toggleSideBar }: NoteCategoryProps) => {
   const { asPath, query } = useRouter()
   const [currentCategoryName] = query.slug as INoteSlug
   const { name: categoryName, topics } = category
-  const [isCategoryOpen, setIsCategoryOpen] = useState<boolean>(false)
+
+  const { isActive: isCategoryOpen, toggle } = useToggle()
 
   const isCurrentCategory = currentCategoryName === categoryName
   const getIsCurrentTopic = (path: string) => asPath === path
@@ -28,7 +31,7 @@ const NoteCategory = ({ category }: NoteCategoryProps) => {
 
   return (
     <>
-      <CategoryNameBox onClick={toggleList}>
+      <CategoryNameBox onClick={toggle}>
         <ImageWrapper isCategoryOpen={isCategoryOpen}>
           <Image src={arrow} width={8} height={8} alt="arrow" />
         </ImageWrapper>
@@ -42,6 +45,7 @@ const NoteCategory = ({ category }: NoteCategoryProps) => {
               key={topic.slug}
               topic={topic}
               categoryName={categoryName}
+              toggleSideBar={toggleSideBar}
               getIsCurrentTopic={getIsCurrentTopic}
             />
           ))}
