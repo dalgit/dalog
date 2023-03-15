@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import NoteCategoryItem from '../NoteCategoryItem/NoteCategoryItem'
 import { INoteCategory, INoteSlug } from '@/types/note'
 import { capitalizer } from '@/utils/common/capitalizer'
-import { useState, useEffect } from 'react'
+import useDidMount from '@/hooks/useDidMout'
 import useToggle from '@/hooks/useToggle'
 
 interface NoteCategoryProps {
@@ -23,11 +23,9 @@ const NoteCategory = ({ category, toggleSideBar }: NoteCategoryProps) => {
   const isCurrentCategory = currentCategoryName === categoryName
   const getIsCurrentTopic = (path: string) => asPath === path
 
-  const toggleList = () => setIsCategoryOpen(!isCategoryOpen)
-
-  useEffect(() => {
-    setIsCategoryOpen(isCurrentCategory)
-  }, [isCurrentCategory])
+  useDidMount(() => {
+    isCurrentCategory && toggle()
+  })
 
   return (
     <>
