@@ -29,9 +29,9 @@ const BlogNavigation = () => {
 export default BlogNavigation
 
 const NavigationItem = styled.li<{ isCurrentUrl: boolean }>`
-  margin-top: 30px;
-  margin-right: 40px;
-  margin-bottom: 70px;
+  margin-top: 24px;
+  margin-right: 32px;
+  margin-bottom: 56px;
 
   a {
     color: ${({ isCurrentUrl, theme }) =>
@@ -39,7 +39,7 @@ const NavigationItem = styled.li<{ isCurrentUrl: boolean }>`
   }
 `
 const NavigationList = styled.ul`
-  font-size: 30px;
+  font-size: 24px;
   display: flex;
   font-weight: bold;
 

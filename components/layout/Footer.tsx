@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <FooterLayout>
       <Link href={SOCIAL.github}>
-        <Image src={logo} width={30} alt="github" />
+        <Image src={logo} width={24} alt="github" />
       </Link>
       <span>Copyright © Dalgit 2023 | {SOCIAL.email}</span>
     </FooterLayout>
@@ -27,8 +27,8 @@ const FooterLayout = styled.footer`
   box-sizing: border-box;
 
   span {
-    margin-top: 10px;
-    font-size: 12px;
+    margin-top: 8px;
+    font-size: 9px;
     color: white;
   }
 `

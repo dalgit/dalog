@@ -24,14 +24,14 @@ export default ProjectCardList
 
 const ProjectCardListLayout = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  grid-gap: 70px;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  grid-gap: 55px;
   justify-items: center;
-  margin: 30px 0 60px 0;
+  margin: 24px 0 48px 0;
 `
 
 const Year = styled.p`
-  font-size: 30px;
+  font-size: 24px;
   font-weight: bolder;
   color: ${({ theme }) => theme.colors._B1B2FF};
 `

@@ -30,7 +30,7 @@ const NoteCategory = ({ category }: NoteCategoryProps) => {
     <>
       <CategoryNameBox onClick={toggleList}>
         <ImageWrapper isCategoryOpen={isCategoryOpen}>
-          <Image src={arrow} width={10} height={10} alt="arrow" />
+          <Image src={arrow} width={8} height={8} alt="arrow" />
         </ImageWrapper>
         <CategoryName>{capitalizer(categoryName)}</CategoryName>
       </CategoryNameBox>
@@ -62,12 +62,12 @@ const CategoryNameBox = styled.div`
   align-items: center;
   cursor: pointer;
   width: fit-content;
-  max-width: 200px;
+  max-width: 160px;
 `
 const CategoryName = styled.span`
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bolder;
-  margin-left: 15px;
+  margin-left: 12px;
   overflow: hidden;
   word-wrap: break-word;
 `

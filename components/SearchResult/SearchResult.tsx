@@ -21,10 +21,10 @@ export default SearchResult
 
 const SearchResultLayout = styled.div`
   display: inline-block;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bolder;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   background-color: ${({ theme }) => theme.colors._CBD9FC};
   color: white;
-  padding: 5px;
+  padding: 4px;
 `

@@ -43,23 +43,6 @@ const NotePage = ({ categories, note }: NotePageProps) => {
 
 export default NotePage
 
-const Title = styled.h1`
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  line-height: 130%;
-`
-
-const ContentBox = styled.div`
-  padding-left: 20px;
-`
-
-const NotePageLayout = styled.div`
-  display: flex;
-
-  height: 100%;
-`
-
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as IParams<INoteSlug>
 
@@ -82,3 +65,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   }
 }
+
+const Title = styled.h1`
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  line-height: 130%;
+`
+
+const ContentBox = styled.div`
+  padding-left: 16px;
+`
+
+const NotePageLayout = styled.div`
+  display: flex;
+  height: 100%;
+`

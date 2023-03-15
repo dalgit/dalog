@@ -34,6 +34,6 @@ const ContentWrapper = styled.div`
   margin-top: ${({ theme }) => theme.pageBaseSize.headerHeight};
   min-height: ${({ theme }) =>
     `calc(100vh - ${theme.pageBaseSize.headerHeight} - ${theme.pageBaseSize.footerHeight})`};
-  width: 1100px;
+  width: 880px;
   max-width: 100%;
 `

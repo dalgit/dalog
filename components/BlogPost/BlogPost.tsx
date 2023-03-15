@@ -67,29 +67,29 @@ const PostHeaderInformation = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 19px;
+  font-size: 15px;
   color: ${({ theme }) => theme.colors._8782CD};
 
   a {
     color: inherit;
     font-size: inherit;
-    margin-right: 20px;
+    margin-right: 16px;
   }
 `
 
 const PostHeader = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.border_normal};
-  padding-bottom: 25px;
+  padding-bottom: 20px;
 
   h1 {
-    font-size: 40px;
+    font-size: 32px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     line-height: 130%;
   }
 `
 
 const Date = styled.time`
-  font-size: 14px;
+  font-size: 11px;
   color: ${({ theme }) => theme.colors.gray};
 `

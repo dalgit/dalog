@@ -1,11 +1,11 @@
 import { DefaultTheme } from 'styled-components'
 
 const pageBaseSize = {
-  contentWidth: '110px',
+  contentWidth: '88px',
   contentPadding: '0 10px',
-  headerHeight: '63px',
-  footerHeight: '90px',
-  sideBarWIdth: '150px',
+  headerHeight: '40px',
+  footerHeight: '72px',
+  sideBarWIdth: '120px',
 }
 
 const deviceSizes = {

@@ -22,7 +22,7 @@ const TechSearchBar = () => {
   return (
     <Form onSubmit={navigateToSearchPage}>
       <Button type="submit">
-        <Image src={icon_search} width={20} alt="icon_search" />
+        <Image src={icon_search} width={16} alt="icon_search" />
       </Button>
       <Input
         type="text"
@@ -38,14 +38,14 @@ export default TechSearchBar
 const Form = styled.form`
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   justify-content: center;
 
   @media ${({ theme }) => theme.device.tabletMax} {
     border: 1px solid #b5b5b5;
-    border-radius: 20px;
-    height: 40px;
-    padding: 0 20px;
+    border-radius: 16px;
+    height: 32px;
+    padding: 0 16px;
   }
 `
 
@@ -58,7 +58,7 @@ const Button = styled.button`
 
 const Input = styled.input`
   border: none;
-  font-size: 15px;
+  font-size: 12px;
   width: 100%;
   ::placeholder {
     color: #b5b5b5;

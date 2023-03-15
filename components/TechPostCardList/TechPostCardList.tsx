@@ -21,7 +21,7 @@ export default TechPostCardList
 const TechPostCardListLayout = styled.section`
   min-width: 0;
   & > * {
-    margin-bottom: 65px;
+    margin-bottom: 52px;
   }
 
   @media ${({ theme }) => theme.device.mobile} {

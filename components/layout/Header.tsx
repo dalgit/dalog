@@ -17,7 +17,7 @@ const Header = () => {
     <HeaderLayout isListOpen={isListOpen}>
       <HeaderInner ref={listRef}>
         <Link href="/">
-          <Image alt="logo" src={logo} height={30} />
+          <Image alt="logo" src={logo} height={24} />
         </Link>
         <List isListOpen={isListOpen}>
           {menus.map((menu) => {
@@ -32,7 +32,7 @@ const Header = () => {
           })}
         </List>
         <HamburgerButton onClick={toggleList}>
-          <Image alt="logo" src={hamburger} height={30} />
+          <Image alt="logo" src={hamburger} height={24} />
         </HamburgerButton>
       </HeaderInner>
     </HeaderLayout>
@@ -56,7 +56,7 @@ const HeaderInner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1100px;
+  width: 880px;
   padding: 0 10px;
 
   @media ${({ theme }) => theme.device.tabletMax} {
@@ -85,7 +85,7 @@ const List = styled.ul<{ isListOpen: boolean }>`
   @media ${({ theme }) => theme.device.mobile} {
     position: absolute;
 
-    height: 200px;
+    height: 160px;
     width: 100%;
     flex-direction: column;
     left: 0;
@@ -99,7 +99,7 @@ const Item = styled.div<{ isCurrentUrl: boolean }>`
   display: flex;
   align-items: center;
   height: 100%;
-  font-size: 26px;
+  font-size: 20px;
   border-bottom: ${({ isCurrentUrl, theme }) =>
     isCurrentUrl && `4px solid ${theme.colors._B1B2FF}`};
 
@@ -109,7 +109,7 @@ const Item = styled.div<{ isCurrentUrl: boolean }>`
   }
 
   &:not(:last-child) {
-    margin-right: 60px;
+    margin-right: 48px;
   }
 
   @media ${({ theme }) => theme.device.mobile} {

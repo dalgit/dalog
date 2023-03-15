@@ -19,10 +19,10 @@ const TechSideBar = ({ tags }: TechSideBarProps) => {
 export default TechSideBar
 
 const TechSideBarLayout = styled.div`
-  font-size: 14px;
-  min-width: 150px;
-  max-width: 150px;
-  margin-left: 30px;
+  font-size: 11px;
+  min-width: 120px;
+  max-width: 120px;
+  margin-left: 24px;
 
   @media ${({ theme }) => theme.device.tabletMax} {
     max-width: 100%;

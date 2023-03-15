@@ -27,10 +27,11 @@ const NoteCategoryItem = ({
 export default NoteCategoryItem
 
 const Item = styled.li<{ isCurrentTopic: boolean }>`
-  margin: 15px 0px 15px 30px;
+  margin: 12px 0px 12px 24px;
+
   a {
-    font-size: 16px;
-    padding-left: 5px;
+    font-size: 13px;
+    padding-left: 4px;
     color: ${({ isCurrentTopic, theme }) =>
       isCurrentTopic ? theme.colors._8782CD : theme.colors.gray};
   }

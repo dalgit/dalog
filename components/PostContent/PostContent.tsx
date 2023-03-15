@@ -17,7 +17,7 @@ const ContentBox = styled.div`
   max-width: 100%;
   padding: 1rem;
   line-height: 1.5;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.post_font};
   h1,

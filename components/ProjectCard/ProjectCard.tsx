@@ -40,13 +40,14 @@ const ProjectCard = ({ post }: ProjectCardProps) => {
 }
 
 export default ProjectCard
+
 const ImageWrapper = styled.div`
   aspect-ratio: 1/0.6;
   position: relative;
 `
 const ContentBox = styled.div`
-  padding: 15px;
-  height: 110px;
+  padding: 12px;
+  height: 88px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -55,19 +56,19 @@ const ContentBox = styled.div`
 const BoxHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 10px;
   color: ${({ theme }) => theme.colors.gray};
 `
 
 const Content = styled.div`
-  font-size: 14px;
+  font-size: 11px;
 `
 const Title = styled.div`
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
 `
 const ProjCardLayout = styled.div`
-  max-width: 280px;
+  max-width: 224px;
   width: 100%;
   aspect-ratio: 1/1;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

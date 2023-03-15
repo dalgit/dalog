@@ -15,7 +15,7 @@ const NoteSideBar = ({ categories }: NoteSideBarProps) => {
   return (
     <>
       <SideBarOpenButton onClick={toggleList}>
-        <Image src={arrow} alt="arrow" width={30} />
+        <Image src={arrow} alt="arrow" width={24} />
       </SideBarOpenButton>
       <NoteSideBarLayout isListOpen={isListOpen} ref={listRef}>
         {categories.map((category) => (
@@ -30,31 +30,31 @@ export default NoteSideBar
 
 const NoteSideBarLayout = styled.ul<{ isListOpen: boolean }>`
   border-right: 2px solid #eaeaea;
-  max-width: 200px;
+  max-width: 160px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
   position: sticky;
   position: -webkit-sticky;
-  height: 700px;
+  height: 630px;
   top: ${({ theme }) => theme.pageBaseSize.headerHeight};
-  padding-top: 60px;
+  padding-top: 48px;
 
   @media ${({ theme }) => theme.device.mobile} {
-    padding-left: 25px;
+    padding-left: 20px;
     position: fixed;
     top: 0;
     transition: left 0.3s ease-in-out;
     z-index: 15;
     height: 100%;
     left: 0;
-    left: ${({ isListOpen }) => (isListOpen ? '0' : `-200px`)};
+    left: ${({ isListOpen }) => (isListOpen ? '0' : `-160px`)};
     background-color: white;
 
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: 30px;
+    gap: 24px;
 
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   }

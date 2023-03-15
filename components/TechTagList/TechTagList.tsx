@@ -38,17 +38,17 @@ const TechTagListLayout = styled.div`
   @media ${({ theme }) => theme.device.tabletMax} {
     display: flex;
     align-items: center;
-    font-size: 18px;
+    font-size: 14px;
 
     white-space: nowrap;
     overflow-x: scroll;
-    margin-bottom: 60px;
+    margin-bottom: 48px;
 
     ::-webkit-scrollbar {
-      height: 5px;
+      height: 4px;
     }
     ::-webkit-scrollbar-thumb {
-      background: ${({ theme }) => theme.colors._878ECD}
+      background: ${({ theme }) => theme.colors._878ECD};
       border-radius: 2px;
     }
     ::-webkit-scrollbar-track {
@@ -56,10 +56,11 @@ const TechTagListLayout = styled.div`
     }
   }
 `
+
 const BoxTitle = styled.div`
   font-weight: bold;
-  margin-bottom: 23px;
-  font-size: 25px;
+  margin-bottom: 18px;
+  font-size: 20px;
   color: ${({ theme }) => theme.colors._878ECD};
 `
 
@@ -71,17 +72,17 @@ const List = styled.ul`
 `
 
 const Item = styled.li<{ isCurrentTag: boolean }>`
-  margin-bottom: 20px;
-  margin-left: 10px;
+  margin-bottom: 16px;
+  margin-left: 8px;
   font-weight: 300;
   width: fit-content;
   border-radius: 10px;
-  padding: 6px;
+  padding: 5px;
   background-color: ${({ isCurrentTag, theme }) =>
     isCurrentTag ? theme.colors._B1B2FF : theme.colors.lightGray};
 
   a {
-    font-size: 17px;
+    font-size: 14px;
     color: ${({ isCurrentTag }) => (isCurrentTag ? 'white' : 'gray;')};
   }
 `
