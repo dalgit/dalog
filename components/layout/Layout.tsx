@@ -3,22 +3,18 @@ import styled from 'styled-components'
 import BlogNavigation from './BlogNavigation'
 import Footer from './Footer'
 import Header from './Header'
-import Spinner from '../Spinner/Spinner'
-import useLoading from '@/hooks/useLoading'
-
+import Loader from '../Loader/Loader'
 interface LayoutProps {
   children: ReactNode
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const { isLoading } = useLoading()
-
   return (
     <BaseLayout>
       <Header />
       <ContentWrapper>
         <BlogNavigation />
-        {isLoading ? <Spinner /> : children}
+        <Loader>{children}</Loader>
       </ContentWrapper>
       <Footer />
     </BaseLayout>
@@ -42,6 +38,4 @@ const ContentWrapper = styled.div`
     `calc(100vh - ${theme.pageBaseSize.headerHeight} - ${theme.pageBaseSize.footerHeight})`};
   width: 880px;
   max-width: 100%;
-  position: relative;
-  height: 100%;
 `
