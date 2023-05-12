@@ -1,5 +1,5 @@
 # Dalog-Nextjs-Blog
- daligt blog - dalog :: My personal blog 
+ dalgit blog - dalog :: My personal blog 
 > [dalog](https://dalog.vercel.app/)
 
 
