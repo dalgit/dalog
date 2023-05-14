@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle`
       color: black;
     }
     body { 
-
       overflow-y: scroll;
       font-family:'Noto Sans KR', sans-serif;
     }

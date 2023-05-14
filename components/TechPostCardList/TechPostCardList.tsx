@@ -7,9 +7,14 @@ interface TechPostCardListPros {
 }
 
 const TechPostCardList = ({ posts }: TechPostCardListPros) => {
+  const sortedPosts = posts.sort(
+    (a, b) =>
+      new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime(),
+  )
+
   return (
     <TechPostCardListLayout>
-      {posts.map((post) => (
+      {sortedPosts.map((post) => (
         <TechPostCard key={post.postSlug} post={post} />
       ))}
     </TechPostCardListLayout>

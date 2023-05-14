@@ -3,7 +3,6 @@ import TechPostCardList from '@/components/TechPostCardList/TechPostCardList'
 import TechSideBar from '@/components/TechSideBar/TechSideBar'
 import { ITechPosts, ITags } from '@/types/tech'
 import { getAllTechs, getAllTags } from '@/utils/techUtils'
-
 interface TechPostListPageProps {
   posts: ITechPosts
   tags: ITags

@@ -6,6 +6,7 @@ export interface IProjectMatterData {
   thumbnail: string
   description: string
   type: string
+  link?: string
 }
 
 export type IProjectPost = IProjectMatterData & IPostContentSlug<string>

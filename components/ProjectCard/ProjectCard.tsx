@@ -11,11 +11,11 @@ interface ProjectCardProps {
 const ProjectCard = ({ post }: ProjectCardProps) => {
   const { postSlug, thumbnail, type, createdDate, title, description } = post
   const thumbnailPath = `/posts/${postSlug}/${thumbnail}`
-  const postUrl = `/projects/${postSlug}`
+  const url = post.link || `/projects/${postSlug}`
 
   return (
     <ProjCardLayout>
-      <Link href={postUrl}>
+      <Link href={url}>
         <ImageWrapper>
           <Image
             src={thumbnailPath}

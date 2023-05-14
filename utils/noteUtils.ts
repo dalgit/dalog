@@ -34,7 +34,6 @@ export const getNoteCategories = (): INoteCategories => {
   return noteFolders.map((folder) => {
     const folderPath = path.join(noteDirectory, folder)
     const topics = getTopics(folderPath)
-
     return { name: folder, topics }
   })
 }

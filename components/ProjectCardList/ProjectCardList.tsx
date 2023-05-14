@@ -8,11 +8,16 @@ interface ProjectCardListProps {
 }
 
 const ProjectCardList = ({ year, posts }: ProjectCardListProps) => {
+  const sortedPosts = posts.sort(
+    (a, b) =>
+      new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime(),
+  )
+
   return (
     <>
       <Year>{year}</Year>
       <ProjectCardListLayout>
-        {posts.map((post: IProjectPost) => (
+        {sortedPosts.map((post: IProjectPost) => (
           <ProjectCard key={post.postSlug} post={post} />
         ))}
       </ProjectCardListLayout>

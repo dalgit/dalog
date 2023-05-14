@@ -8,5 +8,5 @@ export const MAIN_MENUS = [
 export const BLOG_NAVIGATION_MENUS = [
   { id: 1, name: 'Tech', path: '/', type: BlogType.TECH },
   { id: 2, name: 'Proj', path: '/projects', type: BlogType.PROJECTS },
-  { id: 3, name: 'Note', path: '/note/react/1', type: BlogType.NOTE },
+  { id: 3, name: 'Note', path: '/note/site/design', type: BlogType.NOTE },
 ]

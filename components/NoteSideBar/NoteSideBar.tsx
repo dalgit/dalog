@@ -36,7 +36,6 @@ export default NoteSideBar
 
 const NoteSideBarLayout = styled.ul<{ isSideBarOpen: boolean }>`
   border-right: 2px solid #eaeaea;
-  max-width: 160px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -45,6 +44,7 @@ const NoteSideBarLayout = styled.ul<{ isSideBarOpen: boolean }>`
   height: 630px;
   top: ${({ theme }) => theme.pageBaseSize.headerHeight};
   padding-top: 48px;
+  width: 150px;
 
   @media ${({ theme }) => theme.device.mobile} {
     padding-left: 20px;
