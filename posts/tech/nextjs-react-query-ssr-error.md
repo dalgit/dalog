@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 그러나, prefetchQUery에 대해 에러핸들링을 시도해도 (리다이렉트 혹은 낫파운드)
 전혀 처리가 되지 않았다.
 
-이유는 다음과 같았다.
+---
 
 ```javascript
  ...: Promise<void> {
@@ -32,9 +32,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
   }
 ```
 
-[code]https://github.com/TanStack/query/blob/00d0c527bc67cb0db7be9682565c60ffafc1ad51/src/core/queryClient.ts#L410-L412
-
-찾아보니 이 경우, fetchQuery를 사용하면 되었다.
+[(code)](https://github.com/TanStack/query/blob/00d0c527bc67cb0db7be9682565c60ffafc1ad51/src/core/queryClient.ts#L410-L412)
+이유는 다음과 같았다.
 
 prefetchQuery는 fetchQuery를 래핑한 것으로, 에러를 무시하는 프로미스를 반환한다.
 
