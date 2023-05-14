@@ -2,12 +2,13 @@ import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 import BorderBox from '@/components/BorderBox/BorderBox'
+import { SOCIAL } from '@/data/meta'
 
 const InfoPage = () => {
   return (
     <InfoPageLayout>
       <BorderBox title="Me">
-        <Link href="https://github.com/dalgit">
+        <Link href={SOCIAL.github}>
           <img src="https://img.shields.io/badge/github.com/dalgit-181717?style=for-the-badge&logo=github&logoColor=white" />
         </Link>
         <img src="https://img.shields.io/badge/dalgit77@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />

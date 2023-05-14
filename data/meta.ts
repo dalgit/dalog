@@ -1,4 +1,4 @@
-export const HOME_URL = 'https://tmp.com'
+export const HOME_URL = 'https://dalog.vercel.app/'
 
 export const SOCIAL = {
   email: 'dalgit77@gmail.com',
