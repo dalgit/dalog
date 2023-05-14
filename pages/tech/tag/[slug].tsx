@@ -19,10 +19,10 @@ const TagListPage = ({ posts, tags, slug }: TagListPageProps) => {
 
   return (
     <HomeLayout>
-      <div>
+      <Wrapper>
         <SearchResult keyword={slug} postCount={postCount} />
         <TechPostCardList posts={posts} />
-      </div>
+      </Wrapper>
       <TechSideBar tags={tags} />
     </HomeLayout>
   )
@@ -60,4 +60,8 @@ const HomeLayout = styled.div`
   @media ${({ theme }) => theme.device.tabletMax} {
     flex-direction: column-reverse;
   }
+`
+
+const Wrapper = styled.div`
+  overflow: hidden;
 `
