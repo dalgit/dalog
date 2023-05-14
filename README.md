@@ -1,6 +1,6 @@
 # Dalog-Nextjs-Blog
  dalgit blog - dalog :: My personal blog 
-> [dalog](https://dalog.vercel.app/)
+> [dalog](https://www.dalgit.space/)
 
 
 ## Stack

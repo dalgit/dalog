@@ -13,7 +13,7 @@ const SEO: DefaultSeoProps = {
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    url: 'http://www.dalog.com/',
+    url: 'https://www.dalgit.space/',
     site_name: 'Dalog',
     title: '프론트엔드 개발자 블로그',
     images: [{ url: '/assets/dalog_logo.svg' }],

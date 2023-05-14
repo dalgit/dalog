@@ -20,6 +20,7 @@ const ProjectCard = ({ post }: ProjectCardProps) => {
           <Image
             src={thumbnailPath}
             alt="thumbnail"
+            priority
             fill
             style={{
               borderRadius: '12px 12px 0 0',
