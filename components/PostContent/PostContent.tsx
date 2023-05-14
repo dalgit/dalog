@@ -1,3 +1,5 @@
+import hljs from 'highlight.js'
+import { useEffect } from 'react'
 import styled from 'styled-components'
 
 interface PostContentProps {
@@ -5,6 +7,11 @@ interface PostContentProps {
 }
 
 const PostContent = ({ content }: PostContentProps) => {
+  useEffect(() => {
+    hljs.initHighlighting()
+    hljs.configure({ ignoreUnescapedHTML: true })
+  }, [])
+
   return <ContentBox dangerouslySetInnerHTML={{ __html: content }} />
 }
 
@@ -13,7 +20,6 @@ export default PostContent
 const ContentBox = styled.div`
   white-space: pre-Wrap;
   margin: 40px 0px;
-
   max-width: 100%;
   padding: 1rem;
   line-height: 1.5;
